@@ -1,0 +1,26 @@
+/*基本样式*/
+h2{font-weight:normal;}
+.page_content{
+    padding: 5px 10px 0 10px;
+    /*background: #FFFFFF;*/
+}
+
+/*框架主体设置*/
+#mainFrame{
+    background-color:#ffffff; /*主体内容区颜色*/
+}
+.contentStyleLeft{
+    padding: 0 0px 0 0px; /*设置左侧内容边距*/
+}
+.contentStyle{
+    padding: 0 0px 0 1px; /*设置右侧内容边距*/
+}
+#bs_left{
+    width: 196px; /*设置左侧框架宽度*/
+    /*transition:width .2s linear 0.05s;
+    -moz-transition:width .2s linear 0.05s;
+    -webkit-transition:width .2s linear 0.05s;
+    -o-transition:width .2s linear 0.05s;*/
+    /*background: #FFFFFF;*/
+    /*overflow-x: hidden;*/
+}
