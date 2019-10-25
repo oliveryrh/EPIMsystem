@@ -41,6 +41,7 @@ window.onload=function () {
                 xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
             }
             xmlHttp.open("GET","",true);
+            xmlHttp.setRequestHeader("","");
             xmlHttp.send();
             xmlHttp.responseText;
             document.getElementById("password").innerHTML=xmlHttp.responseText;

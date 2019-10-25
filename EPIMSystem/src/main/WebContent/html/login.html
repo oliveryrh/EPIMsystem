@@ -1,34 +1,45 @@
-<!DOCTYPE htmlPUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title></title>
-    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title> 人事管理系统 - 登录</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <link href="../../WebContent/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../WebContent/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="../../WebContent/css/animate.css" rel="stylesheet">
+    <link href="../../WebContent/css/style.css" rel="stylesheet">
+    <link href="../../WebContent/css/login.css" rel="stylesheet">
+    <script>
+        if (window.top !== window.self) {
+            window.top.location = window.location;
+        }
+    </script>
 </head>
-    <body>
-        <div class="win">
-            <div class="login_win">
-                <div class="login_title"></div>
-                 <form class="form_win">
-                     <div class="form_title">
-                         <span>用户登录</span>
-                     </div>
-                     <div class="username">
-                         <i></i><input type="text" name="username"  placeholder="账号" />
-                     </div>
-                     <div class="password">
-                         <i></i><input type="password" name="password"  placeholder="密码" />
-                     </div>
-                     <div class="remember">
-                         <label><input type="checkbox" value=""><span>记住密码？</span></label>
-                     </div>
-                     <div class="forget">
-                         <a href="javascript:;">忘记密码？</a>
-                     </div>
-                     <input type="submit" value="登录" class="submit">
-                </form>
-
-            </div>
+<body class="signin">
+<div class="signinpanel">
+    <div class="row">
+        <div class="col-sm-12">
+            <form method="post" action="../../WebContent/employee/checkLogin.do">
+                <h4 class="no-margins">
+                    <span style="color: #6C6C6C; ">登录：</span>
+                </h4>
+                <p class="m-t-md">
+                    <span style="color: #6C6C6C; ">欢迎登录人事管理系统</span>
+                </p>
+                <input type="text" class="form-control uname" placeholder="用户名" name="employeeNumber" />
+                <input type="password" class="form-control pword m-b" placeholder="密码" name="password" />
+                <p></p>
+                <a href="">忘记密码了？</a>
+                <button class="btn btn-success btn-block" type="submit">登录</button>
+            </form>
         </div>
-    </body>
+    </div>
+    <div class="signup-footer">
+        <div class="pull-left">&copy; EPIM</div>
+    </div>
+</div>
+</body>
+
 </html>

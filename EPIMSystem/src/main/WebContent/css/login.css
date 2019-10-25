@@ -1,154 +1,93 @@
-*{
-    box-sizing: border-box;
+html{height: 100%;}
+body.signin {
+    background: #18c8f6;
+    height: auto;
+    background:url("../WebContent/images/hrlog.png") no-repeat center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: rgba(255,255,255,.95);
+}
+
+.signinpanel {
+    width: 320px;
+    margin: 10% auto 0 auto;
+}
+
+.signinpanel .logopanel {
+    float: none;
+    width: auto;
     padding: 0;
-    margin: 0;
-    font-size: 12px;
-    font-family: "微软雅黑";
-}
-html,body{
-    width: 100%;
-    height: 100%;
-}
-.win{
-    width: 100%;
-    height: 100%;
-    background: #1D8BD8 url(images/bg.jpg) no-repeat center center;
-    background-size: 1920px 100%;
-    padding-top: 5%;
-}
-.login_win{
-    width: 400px;
-    /*height: 600px;*/
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    margin: -300px 0 0 -150px;
-    /*border: 1px solid red;*/
-}
-.login_title{
-    width: 100%;
-    height: 120px;
-    background: url(images/login_title.png) no-repeat center center;
-    background-size: 100%;
-    margin-bottom: 40px;
-    /*border: 1px solid red;*/
-}
-.form_win{
-    width: 100%;
-    /*height: 400px;*/
-    /*background-color:#FFFFFF;*/
-    border-radius: 10px;
-    /*box-shadow: 0 0 5px 2px rgba(0,0,0,.1);*/
-    /*border: 1px solid red;*/
-}
-.form_win>div{
-    width: 80%;
-    height: 50px;
-    margin: auto;
-    /*border: 1px solid #DCDCDC;*/
-    border-radius: 5px;
-    position: relative;
-    background: #FFFFFF;
+    background: none;
 }
 
-.form_win>div.form_title{
-    height: 80px;
-    border: 0;
-    border-radius:0;
-    border-bottom: 1px solid #DCDCDC;
-    display: none;
+.signinpanel .signin-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
 }
 
-.form_win>div.form_title span{
-    color: #656B69;
-    font-size: 18px;
-    text-align: center;
-    line-height: 80px;
+.signinpanel .form-control {
     display: block;
-}
-
-.form_win>div i{
-    display: block;
-    width: 35px;
-    height: 40px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    /*border: 1px solid red;*/
-    border-right: 1px solid #DCDCDC;
-    background: #EEEEEE;
-    display: none;
-}
-.form_win>div.username i{
-    background: url(images/user.png) no-repeat center center;
-    background-size: 50%;
-}
-.form_win>div.username{
-    margin-top: 20px;
-    border-radius: 5px 5px 0 0;
-    border-bottom: 0;
-    -moz-box-shadow:0px 2px 5px #c5c5c5 inset;              /* For Firefox3.6+ */
-    -webkit-box-shadow:0px 2px 5px #c5c5c5 inset;           /* For Chrome5+, Safari5+ */
-    box-shadow:0px 2px 5px #c5c5c5 inset;                   /* For Latest Opera */
-    border-bottom: 1px solid #C5C5C5;
-}
-.form_win>div.password{
-    border-radius: 0 0 5px 5px;
-}
-.form_win>div.password i{
-    background: url(images/password.png) no-repeat center center;
-    background-size: 50%;
-}
-.form_win>div input::-moz-placeholder{
-    color: #EEEEEE;
-}
-.form_win>input{
-    width: 100%;
-    height: 25px;
     margin-top: 15px;
-    font-size: 12px;
-    padding: 0 10px 0 10px;
-    line-height: 25px;
-    outline: none;
-    border: 0;
-    background: transparent;
-    -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
-.form_win>div.remember{
-    border: 0;
-    background: none;
-    height: 20px;
-    margin: 10px auto;
+
+.signinpanel .uname {
+    background: #fff url(../WebContent/images/user.png) no-repeat 95% center;color:#333;
 }
-.form_win>div.remember label{
-    *float: left;
+
+.signinpanel .pword {
+    background: #fff url(../WebContent/images/locked.png) no-repeat 95% center;color:#333;
 }
-.form_win>div.remember input{
-    width: 15px;
-    height: 15px;
-    border-radius: 5px;
-    background: #FFFFFF;
-    float: left;
-    margin-right: 10px;
-    padding: 0;
+
+.signinpanel .btn {
+    margin-top: 15px;
 }
-.form_win>div.remember span{
-    display: block;
-    color: #5B595B;
-    font-size: 14px;
-    float: left;
+
+.signinpanel form {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255,255,255,.3);
+    -moz-box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
+    -webkit-box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
+    box-shadow: 0 3px 0 rgba(12, 12, 12, 0.03);
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    padding: 30px;
 }
-.form_win>div.forget{
-    border: 0;
-    background: none;
-    height: 20px;
-    margin: 10px auto;
-    text-decoration: none;
+
+.signup-footer{border-top: solid 1px rgba(255,255,255,.3);margin:20px 0;padding-top: 15px;}
+
+@media screen and (max-width: 768px) {
+    .signinpanel,
+    .signuppanel {
+        margin: 0 auto;
+        width: 420px!important;
+        padding: 20px;
+    }
+    .signinpanel form {
+        margin-top: 20px;
+    }
+    .signup-footer {
+        margin-bottom: 10px;
+    }
+    .signuppanel .form-control {
+        margin-bottom: 10px;
+    }
+    .signup-footer .pull-left,
+    .signup-footer .pull-right {
+        float: none !important;
+        text-align: center;
+    }
+    .signinpanel .signin-info ul {
+        display: none;
+    }
 }
-.form_win>div.forget a{
-    display: block;
-    color: #fff;
-    font-size: 14px;
-    float: right;
-    text-decoration: none;
+@media screen and (max-width: 320px) {
+    .signinpanel,
+    .signuppanel {
+        margin:0 20px;
+        width:auto;
+    }
 }
