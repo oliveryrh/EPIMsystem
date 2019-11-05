@@ -2,7 +2,7 @@ html{height: 100%;}
 body.signin {
     background: #18c8f6;
     height: auto;
-    background:url("../WebContent/images/hrlog.png") no-repeat center fixed;
+    background:url("../../WebContent/images/bg.jpg") no-repeat center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -34,11 +34,11 @@ body.signin {
 }
 
 .signinpanel .uname {
-    background: #fff url(../WebContent/images/user.png) no-repeat 95% center;color:#333;
+    background: #fff url(../../WebContent/images/user.png) no-repeat 95% center;color:#333;
 }
 
 .signinpanel .pword {
-    background: #fff url(../WebContent/images/locked.png) no-repeat 95% center;color:#333;
+    background: #fff url(../../WebContent/images/locked.png) no-repeat 95% center;color:#333;
 }
 
 .signinpanel .btn {
