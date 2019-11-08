@@ -40,27 +40,16 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <%
-                        List<Leave> list = (List<Leave>)request.getAttribute("list");
-                            int index=1;
-                            for(Leave leave : list){
-                            %>
+
                             <tr class="gradeA">
-                                <td><%=index++ %></td>
-                                <td><%=leave.getEmployee().getName() %></td>
-                                <%
-                                String starttime = MTimeUtil.dateFormat(leave.getStartTime());
-                                String endtime = MTimeUtil.dateFormat(leave.getStartTime());
-                                %>
-                                <td><%=starttime %></td>
-                                <td><%=endtime %></td>
-                                <td><%=leave.getDays() %></td>
-                                <td><%=leave.getType() %></td>
-                                <td><%=leave.getReason() %></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
-                            <%
-                            }
-                            %>
                         </tbody>
                     </table>
                 </div>

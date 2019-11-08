@@ -1,12 +1,13 @@
 package com.epim.service.impl;
 
 import com.epim.mapper.BaseMapper;
-import com.epim.service.Service;
+import com.epim.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class AbstractService<M extends BaseMapper<T>,T>  implements Service<T> {
+//@org.springframework.stereotype.Service
+public class AbstractService<M extends BaseMapper<T>,T>  implements BaseService<T> {
     @Autowired
     protected M mapper;
 
@@ -22,11 +23,11 @@ public class AbstractService<M extends BaseMapper<T>,T>  implements Service<T> {
         this.mapper.insert(object);
     }
 
-    public void update(String id,T object) {
-        this.mapper.update(id,object);
+    public void update(T object) {
+        this.mapper.update(object);
     }
 
-    public void deleteById(String id) {
+    public void delete(String id) {
         this.mapper.deleteById(id);
     }
 }

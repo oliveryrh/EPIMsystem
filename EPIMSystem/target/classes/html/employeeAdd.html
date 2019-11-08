@@ -30,7 +30,6 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label">工号</label>
                             <div class="col-sm-7">
-                                <% Integer employeeNumber = (Integer)request.getAttribute("employeeNumber"); %>
                                 <input type="text" class="form-control" name="employeeNumber" value="<%=employeeNumber %>" readonly="readonly">
                             </div>
                         </div>
@@ -99,17 +98,11 @@
                             <div class="col-sm-7">
                                 <select class="form-control m-b" name="departmentNumber" size="1" required>
                                     <option value="">--请选择部门--</option>
-                                    <%
-                                    List<Department> dList = (List<Department>) request.getAttribute("dList");
-                                    for(Department department : dList){
 
-                                    %>
-                                    <option value="<%=department.getDepartmentNumber() %>">
-                                        <%=department.getName() %>
+                                    <option value="">
+                                        dsad
                                     </option>
-                                    <%
-                                    }
-                                    %>
+
                                 </select>
                             </div>
                         </div>

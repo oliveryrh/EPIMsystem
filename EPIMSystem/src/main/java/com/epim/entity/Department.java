@@ -5,7 +5,7 @@ public class Department {
     * 部门号
     * 主键
     * */
-    private String depart_number;
+    private String departmentNumber;
     /*
      *部门名称
      * */
@@ -17,7 +17,7 @@ public class Department {
     /*
      *部门电话
      * */
-    private String phone_number;
+    private String telephone;
     /*
      *部门位置
      * */
@@ -27,11 +27,11 @@ public class Department {
      * */
     private String notes;
 
-    public String getDepart_number(){
-        return depart_number;
+    public String getDepartmentNumber(){
+        return departmentNumber;
     }
-    public void setDepart_number(String depart_number){
-        this.depart_number=depart_number;
+    public void setDepartmentNumber(String departmentNumber){
+        this.departmentNumber=departmentNumber;
     }
 
     public String getName(){
@@ -49,10 +49,10 @@ public class Department {
     }
 
     public String getPhone_number(){
-        return phone_number;
+        return telephone;
     }
     public void setPhone_number(String phone_number){
-        this.phone_number=phone_number;
+        this.telephone=phone_number;
     }
 
     public String getAddress(){

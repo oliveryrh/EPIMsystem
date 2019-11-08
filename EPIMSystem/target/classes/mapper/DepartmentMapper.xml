@@ -1,30 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.epim.mapper.DeptMapper">
+<mapper namespace="com.epim.mapper.DepartmentMapper">
 	
-	<select id="findAll" resultType="Department">
-		select * from ${department}
+	<select id="findAll" resultMap="ResultMap">
+		select * from department
 	</select>
 
-	<select id="findById" resultType="Department">
-		select * from ${depatment} where department_number=#{departmentNumber};
+	<select id="findById" resultMap="DepartmentMap" parameterType="java.lang.String">
+		select * from department where department_number=#{id};
 	</select>
 
-	<insert id="insert">
-		insert into ${depatment} values 
-		<foreach collection="param" item="obj" open="(" separator="," close=")">
-			#{obj}
-		</foreach>
+	<insert id="insert" >-- parameterType="com.epim.entity.Department"
+		insert into department(department_number,name,manager,telephone,address,notes)
+		values(#{departmentNumber},#{name},#{manager},#{telephone},#{address},#{notes})
 	</insert>
 
 	<update id="update">
-		update ${depatment}
+		update department
 		<set>
 			<foreach collection="param" item="obj" open="(" separator="," close=")">
 				#{obj},
 			</foreach>
 		</set>
-		where id=#{id}
+		where department_number=#{departmentNumber}
 	</update>
+
+	<delete id="delete" parameterType="">
+		delete from department where department_number=#{id}
+	</delete>
+	
+	<resultMap id="DepartmentMap" type="com.epim.entity.Department">
+		<id column="department_number" jdbcType="VARCHAR" property="departmentNumber"></id>
+		<result column="name" jdbcType="VARCHAR" property="name"></result>
+		<result column="manager" jdbcType="VARCHAR" property="manager"></result>
+		<result column="telephone" jdbcType="VARCHAR" property="telephone"></result>
+		<result column="address" jdbcType="VARCHAR" property="address"></result>
+		<result column="notes" jdbcType="VARCHAR" property="notes"></result>
+	</resultMap>
 </mapper>
