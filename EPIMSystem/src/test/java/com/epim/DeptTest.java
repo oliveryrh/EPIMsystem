@@ -26,44 +26,32 @@ import org.springframework.web.context.WebApplicationContext;
 import java.util.List;
 
 
-//@RunWith(SpringJUnit4ClassRunner.class)
-////@SpringBootTest
-////@AutoConfigureMockMvc
-//@WebAppConfiguration
-//@ContextConfiguration(locations = {"classpath:spring.xml"})
+@RunWith(SpringJUnit4ClassRunner.class)
+//@SpringBootTest
+//@AutoConfigureMockMvc
+@WebAppConfiguration
+@ContextConfiguration
 public class DeptTest {
-//    private MockMvc mockMvc;
-//    @Autowired
-//    private WebApplicationContext webApplicationContext;
-//
-//    @Before
-//    public void setup() {
-//        mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();  //初始化MockMvc对象
-//        mockMvc = MockMvcBuilders.standaloneSetup(we).build();//两种方式都可以初始化mockMvc，推荐用这种，上面的会自动跳转地址status判断方法无效
-//    }
+    private MockMvc mockMvc;
+    @Autowired
+    private WebApplicationContext webApplicationContext;
+
+    @Before
+    public void setup() {
+       // mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();  //初始化MockMvc对象
+        mockMvc = MockMvcBuilders.standaloneSetup(webApplicationContext).build();//两种方式都可以初始化mockMvc，推荐用这种，上面的会自动跳转地址status判断方法无效
+    }
 
     @Test
     public void getDeptList()throws Exception{
-//        RequestBuilder requestBuilder= MockMvcRequestBuilders.get("/department/get-dept")
-//                .content(JSONUtils.toJSONString("2001"))
-//                .contentType(MediaType.APPLICATION_JSON);
-//
-//        MvcResult result=mockMvc.perform(requestBuilder).andExpect(MockMvcResultMatchers.status().isOk()).andDo(MockMvcResultHandlers.print()).andReturn();
-//
-//        String content=result.getResponse().getContentAsString();
-//        System.out.println(content);
+        RequestBuilder requestBuilder= MockMvcRequestBuilders.get("/department/get-dept")
+                .content(JSONUtils.toJSONString("2001"))
+                .contentType(MediaType.APPLICATION_JSON);
 
-        String xmlPath="spring/spring.xml";
-        ApplicationContext context = new ClassPathXmlApplicationContext(xmlPath);
-        DepartmentService service = (DepartmentService) context.getBean("DepartmentService");
-        Department department = new Department();
-//        department.setDepart_number("2014");
-//        department.setName("皮肤科");
-//        department.setManager("应仁豪");
-//        department.setAddress("third");
-//        service.insert(department);
-        department=service.findById("2001");
-        System.out.println(department.getName());
+        MvcResult result=mockMvc.perform(requestBuilder).andExpect(MockMvcResultMatchers.status().isOk()).andDo(MockMvcResultHandlers.print()).andReturn();
+
+        String content=result.getResponse().getContentAsString();
+        System.out.println(content);
     }
 
 }

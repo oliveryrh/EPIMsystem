@@ -10,27 +10,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @Controller
-@RequestMapping("atten")
+@RequestMapping("attendance")
 public class AttendanceController {
     @Autowired
     AttendanceService attendanceService;
 
-    @RequestMapping(value = "get-atten-list")
+    @RequestMapping(value = "get-attendance-list")
     public List<Attendance> getDeptList(){
         return attendanceService.findAll();
     }
 
-    @RequestMapping(value = "get-atten-info")
+    @RequestMapping(value = "get-attendance-info")
     public Attendance getDeptInfo(@RequestParam String id){
         return attendanceService.findById(id);
     }
 
-    @RequestMapping(value = "new-atten")
+    @RequestMapping(value = "new-attendance")
     public void newDept(@RequestParam Attendance dept){
         this.attendanceService.insert(dept);
     }
 
-    @RequestMapping(value = "modify-atten")
+    @RequestMapping(value = "modify-attendance")
     public void modifyDept(@RequestParam Attendance department){
         this.attendanceService.update(department);
     }
