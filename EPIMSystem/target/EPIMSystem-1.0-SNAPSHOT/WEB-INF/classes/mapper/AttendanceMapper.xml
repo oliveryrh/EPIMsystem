@@ -4,9 +4,8 @@
 <mapper namespace="com.epim.mapper.AttendanceMapper">
 	
 	<sql id="Base_Column_List">
-		employee_number, day, time_type, start_time, start_type, end_time,
+		id,employee_number, day, time_type, start_time, start_type, end_time,
 		end_type, work_type, notes
-		
 	</sql>
 	
 	<select id="findById" resultType="Attendance">
@@ -17,4 +16,34 @@
 		and day = #{day} and time_type = #{timeType}
 	</select>
 
+	<select id="findAll" resultMap="AttendanceMap">
+		select * from attendance;
+	</select>
+
+	<insert id="insert" parameterType="com.epim.entity.Attendance">
+		insert into attendance(employee_number,day,time_type,start_time,start_type,end_time,end_type,work_type,notes)
+		values (#{employee_number},#{day},#{time_type},#{start_time},#{start_type},#{end_time},#{end_type},
+		#{work_type},#{notes})
+	</insert>
+
+	<update id="update" parameterType="com.epim.entity.Attendance">
+		update attendance
+		<set>
+
+		</set>
+		where
+	</update>
+
+	<resultMap id="AttendanceMap" type="com.epim.entity.Attendance">
+		<id column="id" jdbcType="INT" property="id"></id>
+		<result column="employee_number" jdbcType="VARCHAR" property="employeeNumber"></result>
+		<result column="day" property="day" jdbcType="DATE"></result>
+		<result column="time_type" property="timeType" jdbcType="VARCHAR"></result>
+		<result column="start_time" property="startTime" jdbcType="TIME"></result>
+		<result column="start_type" property="startType" jdbcType="VARCHAR"></result>
+		<result column="end_time" property="endTime" jdbcType="TIME"></result>
+		<result column="end_type" property="endType" jdbcType="VARCHAR"></result>
+		<result column="work_type" property="workType" jdbcType="VARCHAR"></result>
+		<result column="notes" property="notes" jdbcType="VARCHAR"></result>
+	</resultMap>
 </mapper>

@@ -7,15 +7,13 @@
 		select * from department
 	</select>
 
-	<select id="findById" resultMap="ResultMap">
+	<select id="findById" resultMap="DepartmentMap" parameterType="java.lang.String">
 		select * from department where department_number=#{id};
 	</select>
 
-	<insert id="insert">
-		insert into department values
-		<foreach collection="param" item="obj" open="(" separator="," close=")">
-			#{obj}
-		</foreach>
+	<insert id="insert" >-- parameterType="com.epim.entity.Department"
+		insert into department(department_number,name,manager,telephone,address,notes)
+		values(#{departmentNumber},#{name},#{manager},#{telephone},#{address},#{notes})
 	</insert>
 
 	<update id="update">
@@ -25,15 +23,15 @@
 				#{obj},
 			</foreach>
 		</set>
-		where department_number=#{id}
+		where department_number=#{departmentNumber}
 	</update>
 
 	<delete id="delete" parameterType="">
 		delete from department where department_number=#{id}
 	</delete>
 	
-	<resultMap id="ResultMap" type="com.epim.entity.Department">
-		<id column="department_number" jdbcType="VARCHAR" property="department_number"></id>
+	<resultMap id="DepartmentMap" type="com.epim.entity.Department">
+		<id column="department_number" jdbcType="VARCHAR" property="departmentNumber"></id>
 		<result column="name" jdbcType="VARCHAR" property="name"></result>
 		<result column="manager" jdbcType="VARCHAR" property="manager"></result>
 		<result column="telephone" jdbcType="VARCHAR" property="telephone"></result>

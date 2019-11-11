@@ -48,7 +48,7 @@
 	</delete>
 
 	<resultMap id="employeeMap" type="com.epim.entity.Employee">
-		<id column="employee_number" property="employee_number"></id>
+		<id column="employee_number" property="employeeNumber"></id>
 		<result column="name" property="name" jdbcType="VARCHAR"></result>
 		<result column="gender" property="gender" jdbcType="VARCHAR"></result>
 		<result column="birthday" property="birthday" jdbcType="DATE"></result>
@@ -57,8 +57,8 @@
 		<result column="address" property="address" jdbcType="VARCHAR"></result>
 		<result column="photo" property="photo" jdbcType="VARCHAR"></result>
 		<result column="education" property="education" jdbcType="VARCHAR"></result>
-		<result column="department" property="department" jdbcType="VARCHAR"></result>
-		<result column="in_time" property="in_time" jdbcType="TIMESTAMP"></result>
+		<result column="department_number" property="departmentNumber" jdbcType="VARCHAR"></result>
+		<result column="in_time" property="inTime" jdbcType="TIMESTAMP"></result>
 		<result column="password" property="password" jdbcType="VARCHAR"></result>
 		<result column="notes" property="notes" jdbcType="VARCHAR"></result>
 	</resultMap>

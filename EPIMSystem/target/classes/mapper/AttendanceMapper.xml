@@ -35,7 +35,7 @@
 	</update>
 
 	<resultMap id="AttendanceMap" type="com.epim.entity.Attendance">
-		<id column="id" jdbcType="INT" property="id"></id>
+		<id column="id" jdbcType="INTEGER" property="id"></id>
 		<result column="employee_number" jdbcType="VARCHAR" property="employeeNumber"></result>
 		<result column="day" property="day" jdbcType="DATE"></result>
 		<result column="time_type" property="timeType" jdbcType="VARCHAR"></result>

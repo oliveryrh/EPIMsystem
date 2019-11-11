@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epim.entity.Leave">
+
+    <select id="findAll" resultMap="LeaveMap">
+        select * from leave;
+    </select>
+
+    <select id="findById" resultMap="LeaveMap">
+        select * from leave where employee_number={employeeNumber}
+    </select>
+
+    <select id="findByIParam" resultMap="LeaveMap">
+        select * from leave where employee_number={employeeNumber} and status=#{status}
+    </select>
+
+    <insert id="insert">
+
+    </insert>
+
+    <update id="update">
+
+    </update>
+
+    <resultMap id="LeaveMap" type="com.epim.entity.Leave">
+        <id column="id" jdbcType="INT" property="id"></id>
+        <result column="employee_number" jdbcType="VARCHAR" property="employeeNumber"></result>
+        <result column="department_number" jdbcType="VARCHAR" property="departmentNumber"></result>
+        <result column="start_time" jdbcType="DATE" property="startTime"></result>
+        <result column="end_time" jdbcType="DATE" property="endTime"></result>
+        <result column="days" jdbcType="VARCHAR" property="days"></result>
+        <result column="type" jdbcType="VARCHAR" property="type"></result>
+        <result column="reason" jdbcType="VARCHAR" property="reason"></result>
+        <result column="status" jdbcType="VARCHAR" property="status"></result>
+        <result column="notes" jdbcType="VARCHAR" property="notes"></result>
+    </resultMap>
+</mapper>

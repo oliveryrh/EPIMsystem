@@ -26,7 +26,7 @@ import org.springframework.web.context.WebApplicationContext;
 import java.util.List;
 
 
-@RunWith(SpringJUnit4ClassRunner.class)
+//@RunWith(SpringJUnit4ClassRunner.class)
 ////@SpringBootTest
 ////@AutoConfigureMockMvc
 //@WebAppConfiguration
