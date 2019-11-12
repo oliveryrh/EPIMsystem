@@ -3,6 +3,7 @@ package com.epim;
 import com.alibaba.druid.support.json.JSONUtils;
 import com.epim.entity.Department;
 import com.epim.service.DepartmentService;
+import com.epim.service.impl.DepartmentServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,35 +24,40 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.util.ArrayList;
 import java.util.List;
 
-
-@RunWith(SpringJUnit4ClassRunner.class)
-//@SpringBootTest
-//@AutoConfigureMockMvc
-@WebAppConfiguration
-@ContextConfiguration
+//
+//@RunWith(SpringJUnit4ClassRunner.class)
+////@SpringBootTest
+////@AutoConfigureMockMvc
+//@WebAppConfiguration
+//@ContextConfiguration
 public class DeptTest {
-    private MockMvc mockMvc;
+//    private MockMvc mockMvc;
+//    @Autowired
+//    private WebApplicationContext webApplicationContext;
+//
+//    @Before
+//    public void setup() {
+//       // mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();  //初始化MockMvc对象
+//        mockMvc = MockMvcBuilders.standaloneSetup(webApplicationContext).build();//两种方式都可以初始化mockMvc，推荐用这种，上面的会自动跳转地址status判断方法无效
+//    }
+
+
     @Autowired
-    private WebApplicationContext webApplicationContext;
-
-    @Before
-    public void setup() {
-       // mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();  //初始化MockMvc对象
-        mockMvc = MockMvcBuilders.standaloneSetup(webApplicationContext).build();//两种方式都可以初始化mockMvc，推荐用这种，上面的会自动跳转地址status判断方法无效
-    }
-
+    DepartmentService departmentService;
     @Test
     public void getDeptList()throws Exception{
-        RequestBuilder requestBuilder= MockMvcRequestBuilders.get("/department/get-dept")
-                .content(JSONUtils.toJSONString("2001"))
-                .contentType(MediaType.APPLICATION_JSON);
-
-        MvcResult result=mockMvc.perform(requestBuilder).andExpect(MockMvcResultMatchers.status().isOk()).andDo(MockMvcResultHandlers.print()).andReturn();
-
-        String content=result.getResponse().getContentAsString();
-        System.out.println(content);
+//        RequestBuilder requestBuilder= MockMvcRequestBuilders.get("/department/get-dept")
+//                .content(JSONUtils.toJSONString("2001"))
+//                .contentType(MediaType.APPLICATION_JSON);
+//
+//        MvcResult result=mockMvc.perform(requestBuilder).andExpect(MockMvcResultMatchers.status().isOk()).andDo(MockMvcResultHandlers.print()).andReturn();
+//
+//        String content=result.getResponse().getContentAsString();
+//        System.out.println(content);
+        List<Department> department;
+        //System.out.println(department.size());
     }
-
 }
