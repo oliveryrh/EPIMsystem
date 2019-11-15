@@ -48,7 +48,7 @@
 	</delete>
 
 	<resultMap id="employeeMap" type="com.epim.entity.Employee">
-		<id column="employee_number" property="employeeNumber"></id>
+		<id column="employee_number" property="employeeNumber" jdbcType="VARCHAR"></id>
 		<result column="name" property="name" jdbcType="VARCHAR"></result>
 		<result column="gender" property="gender" jdbcType="VARCHAR"></result>
 		<result column="birthday" property="birthday" jdbcType="DATE"></result>

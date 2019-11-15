@@ -6,11 +6,11 @@
     <title> 人事管理系统 - 登录</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <link href="../../WebContent/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../WebContent/css/font-awesome.css?v=4.4.0" rel="stylesheet">
-    <link href="../../WebContent/css/animate.css" rel="stylesheet">
-    <link href="../../WebContent/css/style.css" rel="stylesheet">
-    <link href="../../WebContent/css/login.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="../css/animate.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/login.css" rel="stylesheet">
     <script>
         if (window.top !== window.self) {
             window.top.location = window.location;
@@ -21,18 +21,18 @@
 <div class="signinpanel">
     <div class="row">
         <div class="col-sm-12">
-            <form method="post" action="../../WebContent/employee/checkLogin.do">
+            <form method="post">
                 <h4 class="no-margins">
                     <span style="color: #6C6C6C; ">登录：</span>
                 </h4>
                 <p class="m-t-md">
                     <span style="color: #6C6C6C; ">欢迎登录人事管理系统</span>
                 </p>
-                <input type="text" class="form-control uname" placeholder="用户名" name="employeeNumber" />
-                <input type="password" class="form-control pword m-b" placeholder="密码" name="password" />
+                <input id="userId" type="text" class="form-control uname" placeholder="用户账号" name="employeeNumber" />
+                <input id= "u-password" type="password" class="form-control pword m-b" placeholder="密码" name="password" />
                 <p></p>
-                <a href="">忘记密码了？</a>
-                <button class="btn btn-success btn-block" type="submit">登录</button>
+                <a href="forgetPassword.html">忘记密码？</a>
+                <button class="btn btn-success btn-block" type="submit" onclick="login()">登录</button>
             </form>
         </div>
     </div>
@@ -41,5 +41,5 @@
     </div>
 </div>
 </body>
-
+<script src="../js/userAction.js"></script>
 </html>

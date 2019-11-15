@@ -2,21 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.epim.mapper.DepartmentMapper">
-	
-	<resultMap id="BaseResultMap" type="com.epim.entity.Department">
-		<id column="department_number" jdbcType="VARCHAR" property="departmentNumber"></id>
-		<result column="name" jdbcType="VARCHAR" property="name"></result>
-		<result column="manager" jdbcType="VARCHAR" property="manager"></result>
-		<result column="telephone" jdbcType="VARCHAR" property="telephone"></result>
-		<result column="address" jdbcType="VARCHAR" property="address"></result>
-		<result column="notes" jdbcType="VARCHAR" property="notes"></result>
+
+	<resultMap id="DepartmentMap" type="com.epim.entity.Department">
+		<id column="department_number" jdbcType="VARCHAR" property="departmentNumber"/>
+		<result column="name" jdbcType="VARCHAR" property="name"/>
+		<result column="manager" jdbcType="VARCHAR" property="manager"/>
+		<result column="telephone" jdbcType="VARCHAR" property="telephone"/>
+		<result column="address" jdbcType="VARCHAR" property="address"/>
+		<result column="notes" jdbcType="VARCHAR" property="notes"/>
 	</resultMap>
 
-	<select id="findAll" resultMap="BaseResultMap">
+	<select id="findAll" resultMap="DepartmentMap">
 		select * from department
 	</select>
 
-	<select id="findById" resultMap="BaseResultMap" parameterType="java.lang.String">
+	<select id="findById" resultMap="DepartmentMap" parameterType="java.lang.String">
 		select * from department where department_number=#{id};
 	</select>
 
@@ -33,7 +33,7 @@
 		where department_number=#{departmentNumber}
 	</update>
 
-	<delete id="delete" parameterType="">
+	<delete id="delete">
 		delete from department where department_number=#{id}
 	</delete>
 </mapper>

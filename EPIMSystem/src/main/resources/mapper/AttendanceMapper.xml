@@ -8,7 +8,7 @@
 		end_type, work_type, notes
 	</sql>
 	
-	<select id="findById" resultType="Attendance">
+	<select id="findById" resultMap="AttendanceMap">
 		select 
 		<include refid="Base_Column_List" />
 		from attendance

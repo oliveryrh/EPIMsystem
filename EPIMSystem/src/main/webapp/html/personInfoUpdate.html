@@ -8,14 +8,15 @@
     <meta name="description" content="">
 
     <link rel="shortcut icon" href="favicon.ico">
-    <link href="../../WebContent/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="../../WebContent/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="../css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="../css/font-awesome.css?v=4.4.0" rel="stylesheet">
 
     <!-- Data Tables -->
-    <link href="../../WebContent/css/plugins/dataTables/dataTables.bootstrap.css"
-          rel="stylesheet">
-    <link href="../../WebContent/css/animate.css" rel="stylesheet">
-    <link href="../../WebContent/css/style.css?v=4.1.0" rel="stylesheet">
+    <link href="../css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="../css/animate.css" rel="stylesheet">
+    <link href="../css/style.css?v=4.1.0" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../css/sweetalert.css">
 
 </head>
 <body class="gray-bg">
@@ -24,26 +25,20 @@
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>修改在职员工信息</h5>
+                    <h5>修改个人信息</h5>
                 </div>
                 <div class="ibox-content">
-                    <form method="post" class="form-horizontal" id="commentForm" action="<%=path %>/employee/<%=employee.getId() %>/update.do">
+                    <form method="post" class="form-horizontal" id="commentForm" action="">
                         <div class="form-group">
                             <label class="col-sm-3 control-label">工号</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" name="employeeNumber" value="" readonly="readonly">
+                                <input  id="userId" type="text" class="form-control" name="employeeNumber" value="" readonly="readonly">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">姓名</label>
                             <div class="col-sm-7">
                                 <input type="text" class="form-control" name="name" value="" minlength="2" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">密码</label>
-                            <div class="col-sm-7">
-                                <input type="password" class="form-control" name="password" value="" minlength="4" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -93,18 +88,7 @@
                             <div class="col-sm-7">
                                 <select class="form-control m-b" name="departmentNumber" size="1" required>
                                     <option value="">--请选择部门--</option>
-                                    <%
-                                    List<Department> dList = (List<Department>) request.getAttribute("dList");
-                                    for(Department department : dList){
-                                    %>
-                                    <option value="<%=department.getDepartmentNumber() %>"
-                                    <%
-                                    if(employee.getDepartmentNumber().equals(department.getDepartmentNumber())){
-                                    %>
-                                    selected="selected"
-                                    <%  }  %>
-                                    ><%=department.getName() %></option>
-                                    <%  }  %>
+                                    <option> option</option>
                                 </select>
                             </div>
                         </div>
@@ -139,27 +123,16 @@
 </div>
 
 <!-- 全局js -->
-<script src="../../WebContent/js/jquery.min.js?v=2.1.4"></script>
-<script src="../../WebContent/js/bootstrap.min.js?v=3.3.6"></script>
-<script src="../../WebContent/js/plugins/jeditable/jquery.jeditable.js"></script>
+<script src="../js/jquery.min.js?v=2.1.4"></script>
+<script src="../js/bootstrap.min.js?v=3.3.6"></script>
+<script src="../js/plugins/jeditable/jquery.jeditable.js"></script>
 
 <!-- Data Tables -->
-<script src="../../WebContent/js/plugins/dataTables/jquery.dataTables.js"></script>
-<script src="../../WebContent/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+<script src="../js/plugins/dataTables/jquery.dataTables.js"></script>
+<script src="../js/plugins/dataTables/dataTables.bootstrap.js"></script>
 
 <!-- 自定义js -->
-<script src="../../WebContent/js/content.js?v=1.0.0"></script>
-<script>
-    $().ready(function() {
-        $("#commentForm").validate();
-    });
-    $.validator.setDefaults({
-        submitHandler: function() {
-            parent.layer.msg('修改成功！',{icon: 1});
-            form.submit();
-        }
-    });
-</script>
-
+<script src="../js/content.js?v=1.0.0"></script>
+<script src="../js/general.js"></script>
 </body>
 </html>

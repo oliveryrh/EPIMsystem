@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epim.entity.User">
+
+    <resultMap id="userMap" type="com.epim.entity.User">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="employee_number" jdbcType="VARCHAR" property="employeeNumber"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="power" jdbcType="VARCHAR" property="power"/>
+    </resultMap>
+
+    <select id="findById" resultMap="userMap" parameterType="java.lang.String">
+        select * from user where employee_number=#{employeeNumber}
+    </select>
+
+    <insert id="insert" parameterType="com.epim.entity.User">
+        insert into USER (employee_number,name,password,power)
+        values (#{employeeNumber},#{name},#{password},#{power})
+    </insert>
+
+    <update id="update" parameterType="com.epim.entity.User">
+        update USER
+            <set>
+
+            </set>
+        where employee_number=#{employeeNumber}
+    </update>
+
+    <update id="forget" parameterType="com.epim.entity.User">
+        update USER
+        <set>
+
+        </set>
+        where employee_number=#{employeeNumber}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.String">
+        delete from USER where employee_number=#{employeeNumber}
+    </delete>
+</mapper>

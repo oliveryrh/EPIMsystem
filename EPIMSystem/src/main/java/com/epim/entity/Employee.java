@@ -25,8 +25,6 @@ public class Employee {
 
     private Date inTime;
 
-    private String password;
-
     private String notes;
 
     public String getEmployeeNumber(){return employeeNumber;}
@@ -61,9 +59,6 @@ public class Employee {
 
     public Date getInTime(){return inTime;}
     public void setInTime(Date in_time){this.inTime=in_time;}
-
-    public String getPassword(){return password;}
-    public void setPassword(String password){this.password=password;}
 
     public String getNotes(){return notes;}
     public void setNotes(String notes){this.notes=notes;}

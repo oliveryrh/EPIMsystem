@@ -8,14 +8,14 @@
     <meta name="description" content="">
 
     <link rel="shortcut icon" href="favicon.ico">
-    <link href="../../WebContent/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="../../WebContent/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="../css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="../css/font-awesome.css?v=4.4.0" rel="stylesheet">
 
     <!-- Data Tables -->
-    <link href="../../WebContent/css/plugins/dataTables/dataTables.bootstrap.css"
+    <link href="../css/plugins/dataTables/dataTables.bootstrap.css"
           rel="stylesheet">
-    <link href="../../WebContent/css/animate.css" rel="stylesheet">
-    <link href="../../WebContent/css/style.css?v=4.1.0" rel="stylesheet">
+    <link href="../css/animate.css" rel="stylesheet">
+    <link href="../css/style.css?v=4.1.0" rel="stylesheet">
 
 </head>
 <body class="gray-bg">
@@ -27,13 +27,23 @@
                     <h5>申请请假</h5>
                 </div>
                 <div class="ibox-content">
-                    <form method="post" class="form-horizontal" id="commentForm"
-                          action="">
+                    <form method="post" class="form-horizontal" id="leaveForm" action="">
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">姓名：</label>
-
+                            <label class="col-sm-3 control-label">工号</label>
                             <div class="col-sm-7">
-                                <p class="form-control-static"></p>
+                                <input  id="userId" type="text" class="form-control" name="employeeNumber" value="" required readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">姓名</label>
+                            <div class="col-sm-7">
+                                <input id="name" type="text" class="form-control" name="name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">部门号</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" name="departmentNumber" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -72,8 +82,8 @@
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-8">
-                                <button class="btn btn-success" type="submit">申&nbsp;&nbsp;请</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button class="btn btn-white" type="reset">取&nbsp;&nbsp;消</button>
+                                <button class="btn btn-success" type="submit" onclick="askForLeave()">申&nbsp;&nbsp;请</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button class="btn btn-white" type="reset" onclick="reload()">取&nbsp;&nbsp;消</button>
                             </div>
                         </div>
                     </form>
@@ -84,33 +94,38 @@
 </div>
 
 <!-- 全局js -->
-<script src="../../WebContent/js/jquery.min.js?v=2.1.4"></script>
-<script src="../../WebContent/js/bootstrap.min.js?v=3.3.6"></script>
-<script src="../../WebContent/js/plugins/jeditable/jquery.jeditable.js"></script>
+<script src="../js/jquery.min.js?v=2.1.4"></script>
+<script src="../js/bootstrap.min.js?v=3.3.6"></script>
+<script src="../js/plugins/jeditable/jquery.jeditable.js"></script>
 
 <!-- Data Tables -->
-<script src="../../WebContent/js/plugins/dataTables/jquery.dataTables.js"></script>
-<script src="../../WebContent/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+<script src="../js/plugins/dataTables/jquery.dataTables.js"></script>
+<script src="../js/plugins/dataTables/dataTables.bootstrap.js"></script>
 
 <!-- 自定义js -->
-<script src="../../WebContent/js/content.js?v=1.0.0"></script>
+<script src="../js/content.js?v=1.0.0"></script>
+<script src="../js/general.js"></script>
+<script src="../js/userAction.js"></script>
 
 <!-- 表单验证 -->
-<script src="../../WebContent/js/plugins/validate/jquery.validate.min.js"></script>
-<script src="../../WebContent/js/plugins/validate/messages_zh.min.js"></script>
+<script src="../js/plugins/validate/jquery.validate.min.js"></script>
+<script src="../js/plugins/validate/messages_zh.min.js"></script>
 
 <!-- layer javascript -->
-<script src="../../WebContent/js/plugins/layer/layer.min.js"></script>
+<script src="../js/plugins/layer/layer.min.js"></script>
 <script>
-    $().ready(function() {
-        $("#commentForm").validate();
-    });
-    $.validator.setDefaults({
-        submitHandler: function() {
-            parent.layer.alert('申请成功！',{icon: 1}),
-                form.submit();
-        }
-    });
+    // $().ready(function() {
+    //     $("#commentForm").validate();
+    // });
+    // $.validator.setDefaults({
+    //     submitHandler: function() {
+    //         parent.layer.alert('申请成功！',{icon: 1}),
+    //             form.submit();
+    //     }
+    // });
+    function reload() {
+        location.href="askForLeave.html";
+    }
 </script>
 </body>
 </html>

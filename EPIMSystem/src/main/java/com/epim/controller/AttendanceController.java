@@ -16,23 +16,23 @@ public class AttendanceController {
     AttendanceService attendanceService;
 
     @RequestMapping(value = "get-attendance-list")
-    public List<Attendance> getDeptList(){
+    public List<Attendance> getAttendanceList(){
         return attendanceService.findAll();
     }
 
     @RequestMapping(value = "get-attendance-info")
-    public Attendance getDeptInfo(@RequestParam String id){
+    public Attendance getAttendanceInfo(@RequestParam String id){
         return attendanceService.findById(id);
     }
 
     @RequestMapping(value = "new-attendance")
-    public void newDept(@RequestParam Attendance dept){
-        this.attendanceService.insert(dept);
+    public void newAttendance(@RequestParam Attendance attendance){
+        this.attendanceService.insert(attendance);
     }
 
     @RequestMapping(value = "modify-attendance")
-    public void modifyDept(@RequestParam Attendance department){
-        this.attendanceService.update(department);
+    public void modifyAttendance(@RequestParam Attendance attendance){
+        this.attendanceService.update(attendance);
     }
 
 }

@@ -8,27 +8,27 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service("AttendanceService")
 public class AttendanceServiceImpl implements AttendanceService {
     @Autowired
-    AttendanceMapper mapper;
+    AttendanceMapper attendanceMapper;
     public Attendance findById(String id) {
-        return this.mapper.findById(id);
+        return this.attendanceMapper.findById(id);
     }
 
     public List<Attendance> findAll() {
-        return this.mapper.findAll();
+        return this.attendanceMapper.findAll();
     }
 
     public void insert(Attendance object) {
-        this.mapper.insert(object);
+        this.attendanceMapper.insert(object);
     }
 
     public void update(Attendance object) {
-        this.mapper.update(object);
+        this.attendanceMapper.update(object);
     }
 
     public void delete(String id) {
-        this.mapper.deleteById(id);
+        this.attendanceMapper.deleteById(id);
     }
 }

@@ -8,13 +8,15 @@
     <meta name="description" content="">
 
     <link rel="shortcut icon" href="favicon.ico">
-    <link href="../../WebContent/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="../../WebContent/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="../css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="../css/font-awesome.css?v=4.4.0" rel="stylesheet">
 
     <!-- Data Tables -->
-    <link href="../../WebContent/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
-    <link href="../../WebContent/css/animate.css" rel="stylesheet">
-    <link href="../../WebContent/css/style.css?v=4.1.0" rel="stylesheet">
+    <link href="../css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="../css/animate.css" rel="stylesheet">
+    <link href="../css/style.css?v=4.1.0" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../css/sweetalert.css">
 
 </head>
 <body class="gray-bg">
@@ -50,11 +52,7 @@
                                 <td>性别</td>
                                 <td>电话</td>
                                 <td>所属部门</td>
-                                <%
-                                String intime = MTimeUtil.dateFormat(history.getInTime());
-                                String outtime = MTimeUtil.dateFormat(history.getOutTime());
-                                if(outtime == null) outtime = "";
-                                %>
+
                                 <td>intime</td>
                                 <td>outtime</td>
                                 <td>类别</td>
@@ -69,16 +67,16 @@
     </div>
 </div>
 <!-- 全局js -->
-<script src="../../WebContent/js/jquery.min.js?v=2.1.4"></script>
-<script src="../../WebContent/js/bootstrap.min.js?v=3.3.6"></script>
-<script src="../../WebContent/js/plugins/jeditable/jquery.jeditable.js"></script>
+<script src="../js/jquery.min.js?v=2.1.4"></script>
+<script src="../js/bootstrap.min.js?v=3.3.6"></script>
+<script src="../js/plugins/jeditable/jquery.jeditable.js"></script>
 
 <!-- Data Tables -->
-<script src="../../WebContent/js/plugins/dataTables/jquery.dataTables.js"></script>
-<script src="../../WebContent/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+<script src="../js/plugins/dataTables/jquery.dataTables.js"></script>
+<script src="../js/plugins/dataTables/dataTables.bootstrap.js"></script>
 
 <!-- 自定义js -->
-<script src="../../WebContent/js/content.js?v=1.0.0"></script>
+<script src="../js/content.js?v=1.0.0"></script>
 <script>
     $(document).ready(function () {
         $('.dataTables-example').dataTable();

@@ -4,9 +4,11 @@ import com.epim.entity.Leave;
 import com.epim.mapper.LeaveMapper;
 import com.epim.service.LeaveService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service("LeaveService")
 public class leaveServiceImpl implements LeaveService {
     @Autowired
     LeaveMapper mapper;

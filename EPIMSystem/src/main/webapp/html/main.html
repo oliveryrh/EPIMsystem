@@ -18,11 +18,11 @@
         }
     </style>
 
-    <link rel="shortcut icon" href="../../WebContent/images/hr.jpg">
-    <link href="../../WebContent/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../WebContent/css/font-awesome.css?v=4.4.0" rel="stylesheet">
-    <link href="../../WebContent/css/animate.css" rel="stylesheet">
-    <link href="../../WebContent/css/style.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../images/hr.jpg">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="../css/animate.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
 </head>
 
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow: hidden">
@@ -49,7 +49,7 @@
                 </li>
 
                 <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-                    <span class="ng-scope"><img src="../../WebContent/images/user.png">个人</span>
+                    <span class="ng-scope"><img src="../images/user.png">个人</span>
                 </li>
                 <li><a class="J_menuItem" href="welcome.html">
                         <!-- <i class="fa fa-home"></i> -->
@@ -57,7 +57,7 @@
                 </a>
                 </li>
                 <li>
-                    <a href="graph_metrics.html">
+                    <a href="">
                         <!-- <i class="fa fa fa-newspaper-o"></i> -->
                         <span class="nav-label">个人管理</span>
                         <!-- <span class="fa arrow"></span> -->
@@ -89,7 +89,7 @@
                 <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                     <span class="ng-scope">员工</span>
                 </li>
-                <li><a href="graph_metrics.html">
+                <li><a href="">
                         <!-- <i class="fa fa fa-user-md"></i> -->
                         <span class="nav-label">员工管理</span>
                         <!-- <span class="fa arrow"></span> -->
@@ -103,7 +103,7 @@
                     </ul>
                 </li>
 
-                <li><a href="mailbox.html">
+                <li><a href="">
                         <!-- <i class="fa fa-calendar"></i> -->
                         <span class="nav-label">考勤管理</span>
                         <!-- <span class="fa arrow"></span> -->
@@ -126,55 +126,52 @@
         <div class="row border-bottom">
             <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
                 <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-info " href="#"><i class="fa fa-bars"></i> </a>
-                    <form role="search" class="navbar-form-custom" method="post" action="<%=path %>/employee/search.do?pageNo=1" target="J_iframe">
-                        <div class="form-group">
-                            <input type="text" placeholder="输入查找的员工的姓名 …" class="form-control" name="input" id="top-search">
-                        </div>
-                    </form>
+<!--                    <form role="search" class="navbar-form-custom" method="post" action="" target="J_iframe">-->
+<!--                        <div class="form-group">-->
+<!--                            <input type="text" placeholder="输入查找的员工的姓名 …" class="form-control" name="input" id="top-search">-->
+<!--                        </div>-->
+<!--                    </form>-->
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
                     <li>欢迎：&nbsp;</li>
                     <li class="dropdown">
                         <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                            <!-- <i class="fa fa-user" ></i> -->
-                            <img src="../../WebContent/images/user.png"> 
-                            <!-- <span class="label label-primary">8</span> -->
+                            <span id="userId"></span>
+                            <img src="../images/user.png">
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="<%=path %>/employee/oneself/<%=employee.getId() %>/detial.do" target="J_iframe">我的账户</a>
-                            </li>
+                            <li><a href="" onclick="exit()">退出登录</a></li>
                             <li class="divider"></li>
-                            <li><a href="<%=path %>/employee/login.do">退出登录</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li><a href="<%=path %>/employee/logout.do">注销登录</a>
-                            </li>
+                            <li><a href="resetPassword.html">修改密码</a></li>
                         </ul>
                     </li>
                 </ul>
             </nav>
         </div>
         <div class="row J_mainContent" id="content-main">
-            <iframe id="J_iframe" name="J_iframe" width="100%" height="100%" src="<%=path %>/employee/welcome.do" frameborder="0" seamless href="welcome.html"></iframe>
+            <iframe id="J_iframe" name="J_iframe" width="100%" height="100%" src="welcome.html" frameborder="0" seamless></iframe>
         </div>
     </div>
     <!--右侧部分结束-->
 </div>
 
 <!-- 全局js -->
-<script src="../../WebContent/js/jquery.min.js?v=2.1.4"></script>
-<script src="../../WebContent/js/bootstrap.min.js?v=3.3.6"></script>
-<script src="../../WebContent/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-<script src="../../WebContent/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-<script src="../../WebContent/js/plugins/layer/layer.min.js"></script>
-<script src="../../WebContent/js/layer.js"></script>
+<script src="../js/jquery.min.js?v=2.1.4"></script>
+<script src="../js/bootstrap.min.js?v=3.3.6"></script>
+<script src="../js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="../js/plugins/layer/layer.min.js"></script>
+<script src="../js/layer.js"></script>
 
 <!-- 自定义js -->
-<script src="../../WebContent/js/hAdmin.js?v=4.1.0"></script>
-<script src="../../WebContent/js/index.js" type="text/javascript"></script>
+<script src="../js/hAdmin.js?v=4.1.0"></script>
+<script src="../js/index.js" type="text/javascript"></script>
+<script src="../js/userAction.js" type="text/javascript"></script>
+<script src="../js/general.js" type="text/javascript"></script>
+<script src="../js/pageInfo.js" type="text/javascript"></script>
 
 <!-- 第三方插件 -->
-<script src="../../WebContent/js/plugins/pace/pace.min.js"></script>
+<script src="../js/plugins/pace/pace.min.js"></script>
 <script>
     function getDeptList() {
         var request=new XMLHttpRequest();

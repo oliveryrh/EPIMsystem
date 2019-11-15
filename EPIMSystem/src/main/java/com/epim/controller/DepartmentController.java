@@ -1,5 +1,7 @@
 package com.epim.controller;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.epim.entity.Department;
 import com.epim.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +12,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @Controller
-@RequestMapping("dept")
+@RequestMapping("/dept")
 public class DepartmentController {
     @Autowired
     DepartmentService departmentService;
 
-    @RequestMapping(value = "get-dept-list")
+    @RequestMapping(value = "/get-dept-list")
     public List<Department> getDeptList(){
         return departmentService.findAll();
     }

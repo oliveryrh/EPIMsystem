@@ -3,24 +3,26 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://www.mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
 	<!-- 配置全局变量 -->
 	<settings>
 		<!-- 开启驼峰命名转换 Table:create_tiem到Entity(createTime)-->
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
-	<typeAliases>
-		<typeAlias alias="department" type="com.epim.entity.Department" />
+
+<!--	<typeAliases>-->
+<!--		<typeAlias alias="department" type="com.epim.entity.Department" />-->
 <!--		<typeAlias alias="attendance" type="com.epim.entity.Attendance" />-->
 <!--		<typeAlias alias="employee" type="com.epim.entity.Employee" />-->
 <!--		<typeAlias alias="leave" type="com.epim.entity.Leave" />-->
 <!--		<typeAlias alias="history" type="com.epim.entity.History" />-->
-	</typeAliases>
+<!--	</typeAliases>-->
 
-	<mappers>
-		<mapper resource="mapper/DepartmentMapper.xml"/>
+<!--	<mappers>-->
+<!--		<mapper resource="mapper/DepartmentMapper.xml"/>-->
 <!--		<mapper resource="mapper/AttendanceMapper.xml"/>-->
 <!--		<mapper resource="mapper/LeaveMapper.xml"/>-->
 <!--		<mapper resource="mapper/EmployeeMapper.xml"/>-->
 <!--		<mapper resource="mapper/HistoryMapper.xml"/>-->
-	</mappers>
+<!--	</mappers>-->
 </configuration>

@@ -24,7 +24,7 @@
     </update>
 
     <resultMap id="LeaveMap" type="com.epim.entity.Leave">
-        <id column="id" jdbcType="INT" property="id"></id>
+        <id column="id" jdbcType="INTEGER" property="id"></id>
         <result column="employee_number" jdbcType="VARCHAR" property="employeeNumber"></result>
         <result column="department_number" jdbcType="VARCHAR" property="departmentNumber"></result>
         <result column="start_time" jdbcType="DATE" property="startTime"></result>

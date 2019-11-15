@@ -7,6 +7,8 @@ public class Leave {
 
     private String employeeNumber;
 
+    private String name;
+
     private String departmentNumber;
 
     private Date startTime;
@@ -29,54 +31,66 @@ public class Leave {
     public void setId(Integer id) {
         this.id = id;
     }
+
     public String getEmployeeNumber() {
         return employeeNumber;
     }
     public void setEmployeeNumber(String employeeNumber) {
         this.employeeNumber = employeeNumber;
     }
-    public Date getStartTime() {
-        return startTime;
-    }
+
+    public String getName(){return this.name;}
+    public void setName(String name){this.name=name;}
+
     public String getDepartmentNumber() {
         return departmentNumber;
     }
     public void setDepartmentNumber(String departmentNumber) {
         this.departmentNumber = departmentNumber;
     }
+
+    public Date getStartTime() {
+        return startTime;
+    }
     public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
+
     public Date getEndTime() {
         return endTime;
     }
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
+
     public String getDays() {
         return days;
     }
     public void setDays(String days) {
         this.days = days;
     }
+
     public String getReason() {
         return reason;
     }
     public void setReason(String reason) {
         this.reason = reason;
     }
+
     public String getType() {
         return type;
     }
     public void setType(String type) {
         this.type = type;
     }
+
     public String getStatus() {
         return status;
     }
     public void setStatus(String status) {
         this.status = status;
     }
+
     public String getNotes() {
         return notes;
     }

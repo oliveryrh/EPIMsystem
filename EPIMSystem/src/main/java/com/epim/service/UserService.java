@@ -1,4 +1,7 @@
 package com.epim.service;
 
-public interface UserService {
+
+import com.epim.entity.User;
+
+public interface UserService extends BaseService<User> {
 }

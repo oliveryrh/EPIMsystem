@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.epim.entity.Salary">
+
+    <resultMap id="salaryMap" type="com.epim.entity.Salary">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="employee_number" jdbcType="VARCHAR" property="employeeNumber"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="month" jdbcType="VARCHAR" property="month"/>
+        <result column="basic_salary" jdbcType="DECIMAL" property="basicSalary"/>
+        <result column="deduct" jdbcType="DECIMAL" property="deduct"/>
+        <result column="final_salary" jdbcType="DECIMAL" property="finalSalary"/>
+    </resultMap>
+
+</mapper>

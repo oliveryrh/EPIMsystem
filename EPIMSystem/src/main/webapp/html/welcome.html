@@ -6,11 +6,16 @@
     <title>Welcome</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <link rel="shortcut icon" href="favicon.ico"> <link href="../../WebContent/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="../../WebContent/css/font-awesome.css?v=4.4.0" rel="stylesheet">
-    <link href="../../WebContent/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../WebContent/css/animate.css" rel="stylesheet">
-    <link href="../../WebContent/css/style.css?v=4.1.0" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="../css/font-awesome.css?v=4.4.0" rel="stylesheet">
+
+    <!-- Data Tables -->
+    <link href="../css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="../css/animate.css" rel="stylesheet">
+    <link href="../css/style.css?v=4.1.0" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../css/sweetalert.css">
     <script>
         var myVar=setInterval(function(){myTimer()},1000);
         function myTimer(){
@@ -27,7 +32,7 @@
             <div class="jumbotron">
                 <div style="margin-left: 250px">
                     <p>&nbsp;</p>
-                    <h1>姓名</h1>
+                    <h1 id="userId">姓名</h1>
                     <p>&nbsp;</p>
                     <p>欢迎登录人事管理系统</p>
                     <p id="time">&nbsp;</p>
@@ -42,18 +47,21 @@
         </div>
     </div>
 </div>
+
 <!-- 全局js -->
-<script src="../../WebContent/js/jquery.min.js?v=2.1.4"></script>
-<script src="../../WebContent/js/bootstrap.min.js?v=3.3.6"></script>
+<script src="../js/jquery.min.js?v=2.1.4"></script>
+<script src="../js/bootstrap.min.js?v=3.3.6"></script>
 
 <!-- 自定义js -->
-<script src="../../WebContent/js/content.js?v=1.0.0"></script>
-<script src="../../WebContent/js/layer.js"></script>
+<script src="../js/content.js?v=1.0.0"></script>
+<script src="../js/layer.js"></script>
+<script src="../js/general.js" type="text/javascript"></script>
+
 <!-- layer javascript -->
-<script src="../../WebContent/js/plugins/layer/layer.min.js"></script>
+<script src="../js/plugins/layer/layer.min.js"></script>
 <script>
     function checkIn() {
-        ajaxPost('/attendance/new-attendance',)
+        ajaxPost('/attendance/new-attendance')
         alert('签到成功！')
     }
     function checkOut(){
