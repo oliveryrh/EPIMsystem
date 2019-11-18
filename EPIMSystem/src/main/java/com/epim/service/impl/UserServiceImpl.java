@@ -11,10 +11,10 @@ import java.util.List;
 @Service("UserService")
 public class UserServiceImpl implements UserService {
     @Autowired
-    UserMapper userMapper;
+    UserMapper mapper;
 
     public User findById(String id) {
-        return this.userMapper.findById(id);
+        return this.mapper.findById(id);
     }
 
     public List<User> findAll() {
@@ -22,14 +22,14 @@ public class UserServiceImpl implements UserService {
     }
 
     public void insert(User object) {
-        this.userMapper.insert(object);
+        this.mapper.insert(object);
     }
 
     public void update(User object) {
-        this.userMapper.update(object);
+        this.mapper.update(object);
     }
 
     public void delete(String id) {
-        this.userMapper.deleteById(id);
+        this.mapper.deleteById(id);
     }
 }

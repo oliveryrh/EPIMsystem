@@ -21,49 +21,51 @@ function login() {
         return false;
     }
     else {
-        var xmlHttp=createXmlHttpRequest();
-        var result;
-        xmlHttp.onreadystatechange=function(){
-            //等待服务器响应 当请求状态为4时，说明请求完成
-            if (xmlHttp.readyState===4){
-                //判断服务器响应状态码是否正常
-                if (xmlHttp.status===200){
-                    result=xmlHttp.responseText;
-                    if (result==="wrong-id"||result==="wrong-password"){
-                        alert("账号或密码错误！请重新输入");
-                        document.getElementById("userId").setAttribute("value",userId);
-                        document.getElementById("u-password").setAttribute("value","");
-                    }else {
-                        location.href="main.html";
-                        localStorage.setItem("userId",userId);
-                    }
-                }
-            }
-        }
-        xmlHttp.open("POST","/user/check-login",false);
-        xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-        xmlHttp.send("userId="+userId+"&password="+password);
-
-        // $.ajax({
-        //     type:"POST",
-        //     url:"/user/check-login",
-        //     data:{
-        //         userId:userId,
-        //         password:password
-        //     },
-        //     dataType:"JSON",
-        //     success:function (res) {
-        //         alert("worng");
-        //         if (res==="success"){
-        //             location.href="main.html";
-        //             if ($("#remember").isChecked()){
+        // var xmlHttp=createXmlHttpRequest();
+        // var result;
+        // xmlHttp.onreadystatechange=function(){
+        //     //等待服务器响应 当请求状态为4时，说明请求完成
+        //     if (xmlHttp.readyState===4){
+        //         //判断服务器响应状态码是否正常
+        //         if (xmlHttp.status===200){
+        //             result=xmlHttp.responseFields;
+        //             if (result==="wrong-id"||result==="wrong-password"){
+        //                 alert("账号或密码错误！请重新输入");
+        //                 location.href="login.html";
+        //                 document.getElementById("userId").innerText=userId;
+        //                 document.getElementById("u-password").innerText="";
+        //             }else {
+        //                 location.href="main.html";
         //                 localStorage.setItem("userId",userId);
         //             }
-        //         }else {
-        //             alert("账号或密码错误！请重新输入");
         //         }
         //     }
-        // })
+        // };
+        // xmlHttp.open("POST","/user/check-login",false);
+        // xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        // xmlHttp.send("userId="+userId+"&password="+password);
+
+        $.ajax({
+            type:"POST",
+            url:"/user/check-login",
+            data:{
+                userId:userId,
+                password:password
+            },
+            dataType:"JSON",
+            success:function (data) {
+                var jsonArray=JSON.parse(data);
+                if (jsonArray.message==="success"){
+                    location.href="main.html";
+                    if ($("#remember").isChecked()){
+                        localStorage.setItem("userId",userId);
+                    }
+                }else {
+                    alert("账号或密码错误！请重新输入");
+                    document.getElementById("userId").innerText=userId;
+                }
+            }
+        })
     }
 }
 
@@ -105,7 +107,7 @@ function modifyPassword() {
 }
 
 function exit() {
-    //localStorage.removeItem("userId");
+    localStorage.removeItem("userId");
     location.href="login.html";
 }
 

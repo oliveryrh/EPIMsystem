@@ -10,6 +10,14 @@
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
 
+<!--	<mappers>-->
+<!--		<mapper resource="mapper/DepartmentMapper.xml"/>-->
+<!--		<mapper resource="mapper/AttendanceMapper.xml"/>-->
+<!--		<mapper resource="mapper/LeaveMapper.xml"/>-->
+<!--		<mapper resource="mapper/EmployeeMapper.xml"/>-->
+<!--		<mapper resource="mapper/HistoryMapper.xml"/>-->
+<!--	</mappers>-->
+<!--	-->
 <!--	<typeAliases>-->
 <!--		<typeAlias alias="department" type="com.epim.entity.Department" />-->
 <!--		<typeAlias alias="attendance" type="com.epim.entity.Attendance" />-->
@@ -18,11 +26,5 @@
 <!--		<typeAlias alias="history" type="com.epim.entity.History" />-->
 <!--	</typeAliases>-->
 
-<!--	<mappers>-->
-<!--		<mapper resource="mapper/DepartmentMapper.xml"/>-->
-<!--		<mapper resource="mapper/AttendanceMapper.xml"/>-->
-<!--		<mapper resource="mapper/LeaveMapper.xml"/>-->
-<!--		<mapper resource="mapper/EmployeeMapper.xml"/>-->
-<!--		<mapper resource="mapper/HistoryMapper.xml"/>-->
-<!--	</mappers>-->
+
 </configuration>

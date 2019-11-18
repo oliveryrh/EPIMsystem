@@ -1,34 +1,37 @@
 package com.epim.controller;
 
+import com.epim.datatransport.Request;
+import com.epim.datatransport.Response;
 import com.epim.entity.User;
 import com.epim.service.UserService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("user")
+@RequestMapping("/user")
 public class UserController {
     @Autowired
     UserService userService;
 
-    @PostMapping("check-login")
+    @PostMapping("/check-login")
     @ResponseBody
-    public String findById(@Param("userId") String employeeNumber,@Param("password")String passWord) {
-        User userModel=this.userService.findById(employeeNumber);
+    public Response<User> findById(@RequestBody Request<User> userRequest) {
+        Response<User> userResponse=new Response<User>();
+        User userModel=this.userService.findById(userRequest.getObject().getEmployeeNumber());
         if (userModel!=null){
-            if (userModel.getPassword().equals(passWord)){
-                return userModel.getPower();
-            }else {
-                return "wrong-password";
+            if (userModel.getPassword().equals(userRequest.getObject().getPassword())){
+                userResponse.setObject(userModel);
+                userResponse.setMessage("success");
             }
         }else {
-            return "wrong-id";
+            userResponse.setMessage("wrong");
         }
-        //return this.userService.findById(employeeNumber);
+        return userResponse;
     }
 
     @RequestMapping(value = "modify-password")
