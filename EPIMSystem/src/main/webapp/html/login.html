@@ -21,7 +21,7 @@
 <div class="signinpanel">
     <div class="row">
         <div class="col-sm-12">
-            <form method="post">
+            <form>
                 <h4 class="no-margins">
                     <span style="color: #6C6C6C; ">欢迎登录：</span>
                 </h4>
@@ -31,7 +31,8 @@
                 <input id= "u-password" type="password" class="form-control pword m-b" placeholder="密码" name="password" />
                 <p></p>
                 <a href="forgetPassword.html">忘记密码？</a>
-                <button class="btn btn-success btn-block" type="submit" onclick="login()">登录</button>
+                <a type="button" class="btn btn-success btn-block" onclick="login()">登录</a>
+<!--                <button type="" class="btn btn-success btn-block" onclick="login()">登录</button>-->
             </form>
         </div>
     </div>
@@ -40,5 +41,15 @@
     </div>
 </div>
 </body>
+<!-- 全局js -->
+<script src="../js/jquery.min.js?v=2.1.4"></script>
+<script src="../js/bootstrap.min.js?v=3.3.6"></script>
+<script src="../js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="../js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="../js/plugins/layer/layer.min.js"></script>
+<script src="../js/layer.js"></script>
+<!--<script src="https://unpkg.com/axios/dist/axios.min.js"></script>-->
+
+<!-- 自定义js -->
 <script src="../js/userAction.js"></script>
 </html>

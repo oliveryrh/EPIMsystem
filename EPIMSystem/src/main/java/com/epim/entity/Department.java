@@ -48,11 +48,11 @@ public class Department {
         this.manager=manager;
     }
 
-    public String getPhone_number(){
+    public String getTelephone(){
         return telephone;
     }
-    public void setPhone_number(String phone_number){
-        this.telephone=phone_number;
+    public void setTelephone(String telephone){
+        this.telephone=telephone;
     }
 
     public String getAddress(){

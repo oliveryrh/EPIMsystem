@@ -42,7 +42,6 @@
                         </tr>
                         </thead>
                         <tbody>
-
                                 <tr class="gradeA">
                                     <td></td>
                                     <td></td>
@@ -54,12 +53,11 @@
                                     <td><a href="departmentUpdate.html" class="btn btn-primary">修改</a>&nbsp;&nbsp;
                                         <a href="" class="btn btn-danger">删除</a></td>
                                 </tr>
-
                         </tbody>
                     </table>
                     <div>
 							<span style="float: left; padding: 5px">
-								当前&nbsp;<span style="color: red;">number</span>&nbsp;&nbsp;<b></b>&nbsp;页&nbsp;&nbsp;
+								当前&nbsp;<span style="color: red;">{{number}}</span>&nbsp;&nbsp;<b></b>&nbsp;页&nbsp;&nbsp;
 								总共&nbsp;<b>number</b>&nbsp;条</span>
                         <nav aria-label="Page navigation" style="margin: 0 auto; width: 240px">
                             <ul class="pagination" style="margin: 0;">
@@ -84,9 +82,12 @@
 </div>
 
 <!-- 全局js -->
+<script src="../js/vue.min.js"></script>
+<script src="../js/axios.min.js"></script>
 <script src="../js/jquery.min.js?v=2.1.4"></script>
 <script src="../js/bootstrap.min.js?v=3.3.6"></script>
 <script src="../js/plugins/jeditable/jquery.jeditable.js"></script>
+
 
 <!-- Data Tables -->
 <script src="../js/plugins/dataTables/jquery.dataTables.js"></script>
@@ -95,5 +96,18 @@
 <!-- 自定义js -->
 <script src="../js/content.js?v=1.0.0"></script>
 <script src="../js/userAction.js"></script>
+
+<script>
+    window.onload=function (ev) {
+        var vm=new Vue({
+            el:'.gradeA',
+            methods:{
+                get:function () {
+                    this.$http.get('/dept/get-dept-list').then(function () {  })
+                }
+            }
+        })
+    }
+</script>
 </body>
 </html>

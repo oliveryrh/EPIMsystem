@@ -1,8 +1,9 @@
 function getDeptList() {
     $.ajax({
-        type:"POST",
-        url:"/dept/get-dept-list",
-        success:function (res) {
+        type:"GET",
+        url:"http://localhost:9090/EPIMSystem/dept/get-dept-list",
+        dataType:JSON,
+        success:function (data) {
 
         }
     })

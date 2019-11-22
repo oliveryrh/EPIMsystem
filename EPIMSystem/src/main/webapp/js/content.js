@@ -15,6 +15,9 @@
 
 // $("[data-toggle=popover]").popover();
 
+//设置userId
+document.getElementById("userId").innerText=localStorage.getItem("employeeName");   //main
+document.getElementById("userId").setAttribute("value",localStorage.getItem("employeeName")); //welcome
 
 //判断当前页面是否在iframe中
 if (top == this) {

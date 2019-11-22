@@ -1,5 +1,6 @@
 package com.epim.controller;
 
+import com.epim.datatransport.Response;
 import com.epim.entity.Attendance;
 import com.epim.service.AttendanceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,12 @@ public class AttendanceController {
     }
 
     @RequestMapping(value = "new-attendance")
-    public void newAttendance(@RequestParam Attendance attendance){
+    public Response<Attendance> newAttendance(@RequestParam Attendance attendance){
+        Response<Attendance> response=new Response<Attendance>();
+
         this.attendanceService.insert(attendance);
+        response.setMessage("");
+        return response;
     }
 
     @RequestMapping(value = "modify-attendance")

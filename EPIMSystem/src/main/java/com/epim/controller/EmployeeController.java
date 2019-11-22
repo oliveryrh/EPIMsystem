@@ -15,7 +15,7 @@ public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
 
-    @RequestMapping(value = "get-employee")
+    @RequestMapping(value = "get-employee-info")
     public Employee getEmployeeInfo(@RequestParam String id){
         return this.employeeService.findById(id);
     }

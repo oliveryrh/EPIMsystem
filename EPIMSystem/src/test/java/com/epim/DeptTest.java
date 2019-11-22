@@ -1,6 +1,11 @@
 package com.epim;
 
 import com.alibaba.druid.support.json.JSONUtils;
+import com.alibaba.fastjson.JSONObject;
+import com.epim.datatransport.Request;
+import com.epim.datatransport.Response;
+import com.epim.datatransport.request.UserRequest;
+import com.epim.datatransport.response.DepartmentResponse;
 import com.epim.entity.Department;
 import com.epim.entity.User;
 import com.epim.service.DepartmentService;
@@ -43,16 +48,17 @@ public class DeptTest {
 
     @Test
     public void getDeptList()throws Exception{
-//        Department department=new Department();
-//        department.setDepartmentNumber("2001");
-//        RequestBuilder requestBuilder= MockMvcRequestBuilders.get("/dept/get-dept-info")
-//                .content(JSONUtils.toJSONString(department))
+
+//        RequestBuilder requestBuilder= MockMvcRequestBuilders.post("/user/reset-password")
+//                .content(JSONUtils.toJSONString("y001"))
 //                .contentType(MediaType.APPLICATION_JSON);
 //
 //        MvcResult result=mockMvc.perform(requestBuilder).andExpect(MockMvcResultMatchers.status().isOk()).andDo(MockMvcResultHandlers.print()).andReturn();
 //
 //        String content=result.getResponse().getContentAsString();
-//        System.out.println(content);
+//
+//        DepartmentResponse response= JSONObject.parseObject(content,DepartmentResponse.class);
+//        System.out.println(response);
 
         String xmlPath="/spring/spring.xml";
         ApplicationContext context = new ClassPathXmlApplicationContext(xmlPath);
@@ -61,8 +67,8 @@ public class DeptTest {
 //        System.out.println(user.getName());
 
         UserService service = (UserService) context.getBean("UserService");
-        User user = service.findById("2001");
-        System.out.println(user.getName());
+        User user = service.findById("y001");
+        System.out.println(user.getSalt());
 
     }
 }
