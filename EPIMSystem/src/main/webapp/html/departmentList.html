@@ -7,7 +7,6 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
 
-    <link rel="shortcut icon" href="favicon.ico">
     <link href="../css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
     <link href="../css/font-awesome.css?v=4.4.0" rel="stylesheet">
 
@@ -31,34 +30,24 @@
                     <table class="table table-striped table-bordered table-hover dataTables-example">
                         <thead>
                         <tr>
-                            <th>序号</th>
+<!--                            <th>序号</th>-->
                             <th>部门号</th>
                             <th>部门名称</th>
                             <th>经理</th>
                             <th>电话</th>
                             <th>地址</th>
-                            <th width="180px">备注</th>
+                            <th width="150px">备注</th>
                             <th>管理</th>
                         </tr>
                         </thead>
-                        <tbody>
-                                <tr class="gradeA">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td><a href="departmentUpdate.html" class="btn btn-primary">修改</a>&nbsp;&nbsp;
-                                        <a href="" class="btn btn-danger">删除</a></td>
-                                </tr>
+                        <tbody id="deptList">
+
                         </tbody>
                     </table>
                     <div>
 							<span style="float: left; padding: 5px">
-								当前&nbsp;<span style="color: red;">{{number}}</span>&nbsp;&nbsp;<b></b>&nbsp;页&nbsp;&nbsp;
-								总共&nbsp;<b>number</b>&nbsp;条</span>
+								当前&nbsp;<span style="color: red;"></span>&nbsp;&nbsp;<b></b>&nbsp;页&nbsp;&nbsp;
+								总共&nbsp;<b id="amount">number</b>&nbsp;条</span>
                         <nav aria-label="Page navigation" style="margin: 0 auto; width: 240px">
                             <ul class="pagination" style="margin: 0;">
                                 <li>
@@ -82,12 +71,9 @@
 </div>
 
 <!-- 全局js -->
-<script src="../js/vue.min.js"></script>
-<script src="../js/axios.min.js"></script>
 <script src="../js/jquery.min.js?v=2.1.4"></script>
 <script src="../js/bootstrap.min.js?v=3.3.6"></script>
 <script src="../js/plugins/jeditable/jquery.jeditable.js"></script>
-
 
 <!-- Data Tables -->
 <script src="../js/plugins/dataTables/jquery.dataTables.js"></script>
@@ -95,19 +81,70 @@
 
 <!-- 自定义js -->
 <script src="../js/content.js?v=1.0.0"></script>
-<script src="../js/userAction.js"></script>
 
 <script>
     window.onload=function (ev) {
-        var vm=new Vue({
-            el:'.gradeA',
-            methods:{
-                get:function () {
-                    this.$http.get('/dept/get-dept-list').then(function () {  })
+        $.ajax({
+            type:"GET",
+            url:"http://localhost:9090/EPIMSystem/dept/get-dept-list",
+
+            success:function (data) {
+                var tBody=document.getElementById("deptList");
+                var deptLength=data.length;
+                var amount=document.getElementById("amount");
+                amount.innerText=deptLength;
+                var ind=1;
+                for (var i in data){
+                    ind+=1;
+                    var tr=document.createElement("tr");
+                    tr.setAttribute("class","gradeA");
+                    var index=document.createElement("td");
+                    index.innerText=(ind).toString();
+                    var deptNumber=document.createElement("td");
+                    deptNumber.innerText=data[i].departmentNumber;
+                    var deptName=document.createElement("td");
+                    deptName.innerText=data[i].name;
+                    var deptManager=document.createElement("td");
+                    deptManager.innerText=data[i].manager;
+                    var deptTele=document.createElement("td");
+                    deptTele.innerText=data[i].telephone;
+                    var deptAddress=document.createElement("td");
+                    deptAddress.innerText=data[i].address;
+                    var deptNotes=document.createElement("td");
+                    deptNotes.innerText=data[i].notes;
+                    var deptControl=document.createElement("td");
+                    var modify=document.createElement("a");
+                    modify.innerText="修改";
+                    modify.setAttribute("class","btn btn-primary");
+                    modify.setAttribute("value",data[i].departmentNumber);
+                    modify.setAttribute("onclick","getDeptInfo(this)");
+                    modify.setAttribute("href","departmentUpdate.html");
+                    var del=document.createElement("a");
+                    del.innerText="删除";
+                    del.setAttribute("class","btn btn-danger");
+                    del.setAttribute("onclick","deleteDept(this)");
+                    del.setAttribute("value",data[i].departmentNumber);
+
+                    deptControl.appendChild(modify);
+                    deptControl.appendChild(del);
+
+                    tr.appendChild(deptNumber);
+                    tr.appendChild(deptName);
+                    tr.appendChild(deptManager);
+                    tr.appendChild(deptTele);
+                    tr.appendChild(deptAddress);
+                    tr.appendChild(deptNotes);
+                    tr.appendChild(deptControl);
+
+                    tBody.appendChild(tr);
                 }
+            },
+            error:function () {
+              alert("w");
             }
         })
     }
 </script>
+<script src="../js/userAction.js"></script>
 </body>
 </html>

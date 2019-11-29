@@ -34,62 +34,62 @@
                                 <div class="col-md-1"></div>
                                 <div class="col-md-4">
                                     <label class="col-sm-8 control-label">工号：</label>
-                                    <p class="form-control-static"></p>
+                                    <p class="form-control-static" id="id"></p>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-sm-5 control-label">姓名：</label>
-                                    <p class="form-control-static"></p>
+                                    <p class="form-control-static" id="name"></p>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-1"></div>
                                 <div class="col-md-4">
                                     <label class="col-sm-8 control-label">性别：</label>
-                                    <p class="form-control-static"></p>
+                                    <p class="form-control-static" id="gender"></p>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-sm-5 control-label">出生日期：</label>
-                                    <p class="form-control-static"></p>
+                                    <p class="form-control-static" id="birthday"></p>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-1"></div>
                                 <div class="col-md-4">
                                     <label class="col-sm-8 control-label">电话：</label>
-                                    <p class="form-control-static"></p>
+                                    <p class="form-control-static" id="phone"></p>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-sm-5 control-label">邮箱：</label>
-                                    <p class="form-control-static"></p>
+                                    <p class="form-control-static" id="email"></p>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-1"></div>
                                 <div class="col-md-4">
                                     <label class="col-sm-8 control-label">籍贯：</label>
-                                    <p class="form-control-static"></p>
+                                    <p class="form-control-static" id="native"></p>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-sm-5 control-label">学历：</label>
-                                    <p class="form-control-static"></p>
+                                    <p class="form-control-static" id="education"></p>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-1"></div>
                                 <div class="col-md-4">
                                     <label class="col-sm-8 control-label">部门：</label>
-                                    <p class="form-control-static"></p>
+                                    <p class="form-control-static" id="dept"></p>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-1"></div>
                                 <div class="col-md-4">
                                     <label class="col-sm-8 control-label">入职时间：</label>
-                                    <p class="form-control-static"></p>
+                                    <p class="form-control-static" id="inTime"></p>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="col-sm-5 control-label">备注：</label>
-                                    <p class="form-control-static"></p>
+                                    <p class="form-control-static" id="notes"></p>
                                 </div>
                             </div>
                             <div class="hr-line-dashed"></div>
@@ -111,5 +111,33 @@
     <script src="../js/plugins/dataTables/dataTables.bootstrap.js"></script>
     <!-- 自定义js -->
     <script src="../js/content.js?v=1.0.0"></script>
+    <script>
+        window.onload=function (ev) {
+            var number=localStorage.getItem("employeeNumber");
+            $.ajax({
+                type:"GET",
+                url:"http://localhost:9090/EPIMSystem/employee/get-employee-info?employeeNumber="+number,
+                // data:{},
+                // datatype:JSON,
+                success:function (data) {
+                    var id=document.getElementById("id");
+                    id.innerText=data.employeeNumber;
+                    var name=document.getElementById("name");
+                    var gender=document.getElementById("gender");
+                    var birthday=document.getElementById("birthday");
+                    var phone=document.getElementById("phone");
+                    var email=document.getElementById("email");
+                    var native=document.getElementById("native");
+                    var education=document.getElementById("education");
+                    var dept=document.getElementById("dept");
+                    var time=document.getElementById("inTime");
+                    var notes=document.getElementById("notes");
+                },
+                error:function () {
+
+                }
+            })
+        }
+    </script>
 </body>
 </html>

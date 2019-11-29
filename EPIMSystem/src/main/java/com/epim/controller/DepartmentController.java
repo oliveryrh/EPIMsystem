@@ -17,44 +17,29 @@ public class DepartmentController {
     @Autowired
     DepartmentService departmentService;
 
-    @RequestMapping(value = "/get-dept-list", method= RequestMethod.GET)
-    public DepartmentResponse getDeptList(){
-        DepartmentResponse response=new DepartmentResponse();
-        List<Department> departmentList=departmentService.findAll();
-        if (departmentList!=null&&departmentList.size()>0){
-            for (Department department:departmentList) {
-                System.out.println(department.getName());
-                DepartmentResponse.Department rspDept=response.append();
-                BeanUtils.copyProperties(department,rspDept);
-            }
-        }else {
-            response.setCode("1000");
-            response.setMessage("failed");
-        }
-
-        response.setCode("0");
-        response.setMessage("succeeded");
-        return response;
+    @RequestMapping(value = "/get-dept-list",method = RequestMethod.GET)
+    @ResponseBody
+    public List<Department> getDeptList(){
+        return this.departmentService.findAll();
     }
 
     @RequestMapping(value = "/get-dept-info", method= RequestMethod.GET)
-    public Department getDeptInfo(@RequestBody String id){
-        DepartmentResponse response=new DepartmentResponse();
+    @ResponseBody
+    public Department getDeptInfo(@RequestParam("deptNumber") String id){
+//        Response<Department> response=new Response<Department>();
+//
+//        Department department = departmentService.findById(id);
+//        if (department!=null){
+//            System.out.println(department.getName());
+//            response.setMessage("succeeded");
+//            response.setObject(department);
+//        }else {
+//            response.setMessage("failed");
+//        }
+//
+//        return response;
 
-        Department department = departmentService.findById(id);
-        if (department!=null){
-            System.out.println(department.getName());
-            DepartmentResponse.Department rspDept=response.new Department();
-            BeanUtils.copyProperties(department,rspDept);
-            System.out.println(rspDept.getDepartmentNumber());
-        }else {
-            response.setCode("1000");
-            response.setMessage("failed");
-        }
-
-        response.setCode("200");
-        response.setMessage("succeeded");
-        return department;
+        return this.departmentService.findById(id);
     }
 
     @RequestMapping(value = "/new-dept",method = RequestMethod.POST)
@@ -68,7 +53,7 @@ public class DepartmentController {
     }
 
     @RequestMapping(value = "/delete-dept",method = RequestMethod.POST)
-    public void deleteDept(@RequestBody String id){
+    public void deleteDept(@RequestParam("deptNumber") String id){
         this.departmentService.delete(id);
     }
 }

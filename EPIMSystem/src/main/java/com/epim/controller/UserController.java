@@ -20,7 +20,7 @@ public class UserController {
 
     @RequestMapping(value = "/check-login", method= RequestMethod.GET)
     @ResponseBody
-    public Response<User> findById(@RequestParam("employeeNumber")String employeeNumber,@RequestParam("password")String password) {
+    public Response<User> checkLogin(@RequestParam("employeeNumber")String employeeNumber,@RequestParam("password")String password) {
         Response<User> userResponse=new Response<User>();
         User userModel=this.userService.findById(employeeNumber);
         if (userModel!=null){

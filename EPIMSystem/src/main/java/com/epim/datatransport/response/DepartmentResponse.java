@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DepartmentResponse extends BaseResponse{
-    @JSONField(name = "department")
+    @JSONField(name = "departmentList")
     private List<Department> departments;
 
     public List<Department> getDepartments() {

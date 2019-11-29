@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "employee")
+@RequestMapping(value = "/employee")
 public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
 
-    @RequestMapping(value = "get-employee-info")
-    public Employee getEmployeeInfo(@RequestParam String id){
+    @RequestMapping(value = "/get-employee-info")
+    public Employee getEmployeeInfo(@RequestParam("employeeNumber") String id){
         return this.employeeService.findById(id);
     }
 

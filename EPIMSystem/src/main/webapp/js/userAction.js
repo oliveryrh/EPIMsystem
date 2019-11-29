@@ -1,18 +1,8 @@
-function createXmlHttpRequest() {
-    var xmlHttp;
-    if (window.XMLHttpRequest){
-        xmlHttp=new XMLHttpRequest();
-    }else {
-        xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    return xmlHttp;
-}
 function login() {
     /*输入规范判断*/
     var employeeNumber=document.getElementById("userId").value;
     var password=document.getElementById("u-password").value;
 
-    //window.location.href="main.html";
 
     if (employeeNumber===""){
         alert("用户账号不能为空!请输入账号");
@@ -123,7 +113,7 @@ function modifyPassword() {
             dataType:"JSON",
             success:function (data) {
                 if (data.message==="succeeded") {
-                    location.href = "html/main.html";
+                    location.href = "html/login.html";
                     localStorage.setItem("userId", employeeNumber);
                 }
             }
@@ -155,7 +145,7 @@ function checkIn() {
     $.ajax({
         type:"POST",
         url:"http://localhost:9090/EPIMSystem/attendance/new-attendance",
-        dataType:json,
+        dataType:JSON,
         success:function (data) {
             if (data.message=='succeeded'){
                 alert(data.message);
@@ -181,6 +171,55 @@ function getPersonalInfo() {
             if (data.message=='succeeded'){
                 alert(data.message);
             }
+        }
+    })
+}
+
+function getDeptInfo(ele) {
+    var deptNumber=$(ele).attr("value");
+    $.ajax({
+        type:"GET",
+        url:"http://localhost:9090/EPIMSystem/dept/get-dept-info?deptNumber="+deptNumber,
+        //dataType:JSON,
+        success:function (data) {
+            // var deptNum=document.getElementById("deptNumber");
+            // deptNum.setAttribute("value",data.departmentNumber);
+            // var name=document.getElementById("name");
+            // name.setAttribute("value",data.name);
+            // var manager=document.getElementById("manager");
+            // manager.setAttribute("value",data.manager);
+            // var tele=document.getElementById("telephone");
+            // tele.setAttribute("value",data.telephone);
+            // var address=document.getElementById("address");
+            // address.setAttribute("value",data.address);
+            // var notes=document.getElementById("notes");
+            // if (data.notes!=null){
+            //     notes.setAttribute("value",data.notes);
+            // }
+            localStorage.setItem("dataInfo",data);
+            localStorage.setItem("deptN",data.departmentNumber);
+            localStorage.setItem("na",data.name);
+            localStorage.setItem("m",data.manager);
+            localStorage.setItem("t",data.telephone);
+            localStorage.setItem("a",data.address);
+            localStorage.setItem("no",data.notes);
+        },
+        error:function () {
+            alert("w2");
+        }
+    })
+}
+function deleteDept(ele) {
+    var deptNumber=$(ele).attr("value");
+    $.ajax({
+        type:"POST",
+        url:"http://localhost:9090/EPIMSystem/dept//delete-dept?deptNumber="+deptNumber,
+        success:function (data) {
+            location.href="departmentList.html";
+            alert("删除成功");
+        },
+        error:function () {
+            alert("删除失败，请重新操作!");
         }
     })
 }
