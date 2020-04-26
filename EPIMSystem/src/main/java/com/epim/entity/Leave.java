@@ -1,6 +1,5 @@
 package com.epim.entity;
 
-import java.util.Date;
 
 public class Leave {
     private Integer id;
@@ -9,11 +8,11 @@ public class Leave {
 
     private String name;
 
-    private String departmentNumber;
+    private String department;
 
-    private Date startTime;
+    private String startTime;
 
-    private Date endTime;
+    private String endTime;
 
     private String days;
 
@@ -42,24 +41,24 @@ public class Leave {
     public String getName(){return this.name;}
     public void setName(String name){this.name=name;}
 
-    public String getDepartmentNumber() {
-        return departmentNumber;
+    public String getDepartment() {
+        return department;
     }
-    public void setDepartmentNumber(String departmentNumber) {
-        this.departmentNumber = departmentNumber;
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
-    public Date getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
-    public void setStartTime(Date startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
-    public void setEndTime(Date endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 

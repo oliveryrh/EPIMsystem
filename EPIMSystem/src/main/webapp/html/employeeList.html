@@ -7,7 +7,7 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
 
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="">
     <link href="../css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
     <link href="../css/font-awesome.css?v=4.4.0" rel="stylesheet">
 
@@ -29,54 +29,22 @@
                 <div class="ibox-content">
                     <table class="table table-striped table-bordered table-hover dataTables-example">
                         <thead>
-                        <tr>
-                            <th>序号</th>
-                            <th>工号</th>
-                            <th>姓名</th>
-                            <th>性别</th>
-                            <th>电话</th>
-                            <th>部门名称</th>
-                            <th>入职时间</th>
-                            <th>管理</th>
-                        </tr>
+                            <tr>
+                                <th>工号</th>
+                                <th>姓名</th>
+                                <th>职位</th>
+                                <th>性别</th>
+                                <th>生日</th>
+                                <th>电话</th>
+                                <th>部门名称</th>
+                                <th>入职时间</th>
+                                <th>管理</th>
+                            </tr>
                         </thead>
-                        <tbody>
-
-                                <tr class="gradeA">
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td><a href="personInfo.html" class="btn btn-info">查看</a>&nbsp;&nbsp;
-                                        <a href="personInfoUpdate.html" class="btn btn-primary">修改</a>&nbsp;&nbsp;
-                                        <a onclick="" class="btn btn-danger delete">删除</a></td>
-                                </tr>
+                        <tbody id="employeeList">
 
                         </tbody>
                     </table>
-                    <div>
-                        <span style="float: left; padding: 5px">
-                            当前&nbsp;<span style="color: red;"><%=pe.getCurrent() %></span>&nbsp;/&nbsp;<b><%=pe.getPages() %></b>&nbsp;页&nbsp;&nbsp;
-                            总共&nbsp;<b><%=pe.getTotal() %></b>&nbsp;条</span>
-                        <nav aria-label="Page navigation" style="margin: 0 auto; width: 240px">
-                            <ul class="pagination" style="margin: 0;">
-                                <li>
-                                    <a href="<%=path %>/employee/listPage.do?pageNo=<%=pe.getCurrent()-1>1?pe.getCurrent()-1:1 %>"
-                                       aria-label="Previous"> <span aria-hidden="true">前一页</span>
-                                    </a>
-                                </li>
-
-                                <li><a href="<%=path %>/employee/listPage.do?pageNo=<%=i%>"><%=i %></a></li>
-
-                                <li><a href="<%=path %>/employee/listPage.do?pageNo=<%=pe.getCurrent()+1<pe.getPages()?pe.getCurrent()+1:pe.getPages() %>"
-                                       aria-label="Next"> <span aria-hidden="true">后一页</span>
-                                </a></li>
-                            </ul>
-                        </nav>
-                    </div>
                 </div>
             </div>
         </div>
@@ -93,20 +61,87 @@
 <script src="../js/plugins/dataTables/dataTables.bootstrap.js"></script>
 <!-- 自定义js -->
 <script src="../js/content.js?v=1.0.0"></script>
-
 <!-- layer javascript -->
 <script src="../js/plugins/layer/layer.min.js"></script>
+<script src="../js/userAction.js"></script>
 
 <script type="text/javascript">
 
-    function del(id){
-        parent.layer.confirm('确认删除？', {
-            btn: ['确认','取消'], //按钮
-            shade: false //不显示遮罩
-        }, function(){
-            parent.layer.msg('删除成功！', {icon: 1});
-            location.href="./"+ id +"/delete.do";
-        });
+    window.onload=function (ev) {
+        $.ajax({
+            type:"GET",
+            url:"http://localhost:9090/EPIMSystem/employee/get-employee-list",
+
+            success:function (data) {
+                var tBody=document.getElementById("employeeList");
+
+                var index=1;
+                for (var i in data){
+                    index+=1;
+
+                    var tr=document.createElement("tr");
+                    tr.setAttribute("class","gradeA");
+                    var employeeNumber=document.createElement("td");
+                    employeeNumber.innerText=data[i].employeeNumber;
+                    var name=document.createElement("td");
+                    name.innerText=data[i].name;
+                    var position=document.createElement("td");
+                    position.innerText=data[i].position;
+                    var gender=document.createElement("td");
+                    gender.innerText=data[i].gender;
+                    var birthday=document.createElement("td");
+                    birthday.innerText=data[i].birthday;
+                    var telephone=document.createElement("td");
+                    telephone.innerText=data[i].telephone;
+                    var dept=document.createElement("td");
+                    dept.innerText=data[i].departmentNumber;
+                    var inTime=document.createElement("td");
+                    inTime.innerText=data[i].inTime;
+
+                    var control=document.createElement("td");
+                    var modify=document.createElement("a");
+                    modify.innerText="修改";
+                    modify.setAttribute("class","btn btn-primary");
+                    modify.setAttribute("value",data[i].employeeNumber);
+                    modify.setAttribute("onclick","getEmployeeInfo(this)");
+                    modify.setAttribute("href","employeeInfoUpdate.html");
+                    var del=document.createElement("a");
+                    del.innerText="删除";
+                    del.setAttribute("class","btn btn-danger");
+                    del.setAttribute("onclick","deleteEmployee(this)");
+                    del.setAttribute("value",data[i].employeeNumber);
+                    var salary=document.createElement("a");
+                    salary.innerText="本月薪资设置";
+                    salary.setAttribute("class","btn btn-success");
+                    salary.setAttribute("value",data[i].employeeNumber);
+                    salary.setAttribute("onclick","set(this)");
+                    salary.setAttribute("href","employeeSalarySet.html");
+
+                    control.appendChild(modify);
+                    control.appendChild(del);
+                    control.appendChild(salary);
+
+                    tr.appendChild(employeeNumber);
+                    tr.appendChild(name);
+                    tr.appendChild(position);
+                    tr.appendChild(gender);
+                    tr.appendChild(birthday);
+                    tr.appendChild(telephone);
+                    tr.appendChild(dept);
+                    tr.appendChild(inTime);
+                    tr.appendChild(control);
+
+                    tBody.appendChild(tr);
+                }
+            },
+            error:function () {
+                alert("w");
+            }
+        })
+    };
+    function set(ele) {
+        var number=$(ele).attr("value");
+        localStorage.setItem("employee",number);
     }
 </script>
 </body>

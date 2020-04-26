@@ -52,7 +52,7 @@
                     <span class="ng-scope"><img src="../images/user.png">个人</span>
                 </li>
                 <li><a class="J_menuItem" href="welcome.html">
-                        <span class="nav-label">主页</span>
+                    <span class="nav-label">主页</span>
                 </a>
                 </li>
                 <li>
@@ -68,47 +68,6 @@
                         <li><a class="J_menuItem" href="userSalaryList.html">薪资记录</a></li>
                     </ul>
                 </li>
-
-                <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-                    <span class="ng-scope">部门</span>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="nav-label">部门管理</span>
-                    </a>
-                    <ul class="nav nav-second-level">
-                        <li><a class="J_menuItem" href="departmentList.html" onclick="">部门列表</a></li>
-                        <li><a class="J_menuItem" href="departmentAdd.html">添加部门</a></li>
-                    </ul>
-                </li>
-
-                <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-                    <span class="ng-scope">员工</span>
-                </li>
-                <li>
-                    <a href="">
-                        <span class="nav-label">员工管理</span>
-                    </a>
-                    <ul class="nav nav-second-level">
-                        <li><a class="J_menuItem" href="employeeList.html">在职员工</a></li>
-                        <li><a class="J_menuItem" href="employeeAdd.html">增加员工</a></li>
-                        <li><a class="J_menuItem" href="employeeSalary.html">员工薪资</a></li>
-<!--                        <li><a class="J_menuItem" href="employeeSalarySet.html">薪资设置</a></li>-->
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="">
-                        <span class="nav-label">考勤管理</span>
-                    </a>
-                    <ul class="nav nav-second-level">
-                        <li><a class="J_menuItem" href="employeeWork.html">工作记录</a></li>
-                        <li><a class="J_menuItem" href="employeeLeaveList.html">请假列表</a></li>
-                        <li><a class="J_menuItem" href="askForLeaveNotAllowed.html">未批准列表</a></li>
-                        <li><a class="J_menuItem" href="askForLeaveAllowed.html">已批准列表</a></li>
-<!--                        <li><a class="J_menuItem" href="workTimeStandard.html">时间标准</a></li>-->
-                    </ul>
-                </li>
             </ul>
         </div>
     </nav>
@@ -119,18 +78,18 @@
         <div class="row border-bottom">
             <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
                 <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-info " href="#"><i class="fa fa-bars"></i> </a>
-<!--                    <form role="search" class="navbar-form-custom" method="post" action="" target="J_iframe">-->
-<!--                        <div class="form-group">-->
-<!--                            <input type="text" placeholder="输入查找的员工的姓名 …" class="form-control" name="input" id="top-search">-->
-<!--                        </div>-->
-<!--                    </form>-->
+                    <!--                    <form role="search" class="navbar-form-custom" method="post" action="" target="J_iframe">-->
+                    <!--                        <div class="form-group">-->
+                    <!--                            <input type="text" placeholder="输入查找的员工的姓名 …" class="form-control" name="input" id="top-search">-->
+                    <!--                        </div>-->
+                    <!--                    </form>-->
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
                     <li>欢迎：&nbsp;</li>
                     <li class="dropdown">
                         <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                            <span id="userId"></span>
                             <img src="../images/user.png">
-                            <span id="name"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="login.html" onclick="exit()">退出登录</a></li>
@@ -165,10 +124,6 @@
 
 <!-- 第三方插件 -->
 <script src="../js/plugins/pace/pace.min.js"></script>
-<script>
-    window.onload=function (ev) {
-        document.getElementById("name").innerText=localStorage.getItem("employeeName");
-    }
-</script>
 </body>
+
 </html>

@@ -20,52 +20,35 @@ public class UserController {
 
     @RequestMapping(value = "/check-login", method= RequestMethod.GET)
     @ResponseBody
-    public Response<User> checkLogin(@RequestParam("employeeNumber")String employeeNumber,@RequestParam("password")String password) {
-        Response<User> userResponse=new Response<User>();
+    public User checkLogin(@RequestParam("employeeNumber")String employeeNumber,@RequestParam("password")String password) {
         User userModel=this.userService.findById(employeeNumber);
-        if (userModel!=null){
-            if (userModel.getPassword().equals(password)){
-                userResponse.setObject(userModel);
-                userResponse.setMessage("succeeded");
-            }
-        }else {
-            userResponse.setMessage("failed");
-        }
-        return userResponse;
+        return userModel;
     }
 
-    @RequestMapping(value = "/modify-password", method= RequestMethod.POST)
+    @RequestMapping(value = "/modify-password", method= RequestMethod.GET)
     @ResponseBody
-    public Response<User> modifyPassWord(@Param("employeeNumber") String employeeNumber,
-                                 @Param("oldPassword") String oldPassword, @Param("newPassword") String newPassword){
-        Response<User> response=new Response<User>();
+    public String modifyPassWord(@RequestParam("id") String employeeNumber,@RequestParam("newPwd") String newPassword){
         User userModel=userService.findById(employeeNumber);
         if (userModel!=null){
-            if (userModel.getPassword().equals(oldPassword)){
-                userModel.setPassword(newPassword);
-                userService.update(userModel);
-                response.setMessage("succeeded");
-            }else {
-                response.setMessage("failed");
-            }
+            userModel.setPassword(newPassword);
+            userService.update(userModel);
+            return "1";
         }
-
-        return response;
+        else {
+            return "2";
+        }
     }
 
-    @RequestMapping(value = "/reset-password", method= RequestMethod.POST)
+    @RequestMapping(value = "/reset-password", method= RequestMethod.GET)
     @ResponseBody
-    public Response<User> resetPassword(@RequestParam("employeeNumber")String employeeNumber,@RequestParam("password")String password ){
-        Response<User> response=new Response<User>();
+    public String resetPassword(@RequestParam("id")String employeeNumber,@RequestParam("pwd")String password ){
         User user=this.userService.findById(employeeNumber);
         if (user!=null){
             user.setPassword(password);
             userService.update(user);
-            response.setMessage("succeeded");
+            return "1";
         }else {
-            response.setMessage("failed");
+            return "2";
         }
-
-        return response;
     }
 }

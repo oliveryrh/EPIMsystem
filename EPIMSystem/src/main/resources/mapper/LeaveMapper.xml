@@ -1,38 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.epim.entity.Leave">
+<mapper namespace="com.epim.mapper.LeaveMapper">
 
-    <select id="findAll" resultMap="LeaveMap">
-        select * from leave;
+    <select id="findAll" resultMap="leaveMap">
+        select * from leaverecord
     </select>
 
-    <select id="findById" resultMap="LeaveMap">
-        select * from leave where employee_number={employeeNumber}
+    <select id="findById" resultMap="leaveMap" parameterType="java.lang.String">
+        select * from leaverecord where employee_number=#{id};
     </select>
 
-    <select id="findByIParam" resultMap="LeaveMap">
-        select * from leave where employee_number={employeeNumber} and status=#{status}
+    <select id="find" resultMap="leaveMap">
+        select * from leaverecord where id=#{id};
     </select>
 
     <insert id="insert">
-
+        insert into leaverecord(employee_number,name,department,start_Time,end_Time,days,type,reason,status,notes)
+        values (#{param.employeeNumber},#{param.name},#{param.department},#{param.startTime},#{param.endTime},#{param.days},
+        #{param.type},#{param.reason},#{param.status},#{param.notes});
     </insert>
 
     <update id="update">
-
+        update leaverecord
+        <set>
+            <if test="param.employeeNumber!=null">
+                employee_number=#{param.employeeNumber},
+            </if>
+            <if test="param.name!=null">
+                name=#{param.name},
+            </if>
+            <if test="param.department!=null">
+                department=#{param.department},
+            </if>
+            <if test="param.startTime!=null">
+                start_time=#{param.startTime},
+            </if>
+            <if test="param.endTime!=null">
+                end_time=#{param.endTime},
+            </if>
+            <if test="param.days!=null">
+                days=#{param.days},
+            </if>
+            <if test="param.type!=null">
+                type=#{param.type},
+            </if>
+            <if test="param.reason!=null">
+                reason=#{param.reason},
+            </if>
+            <if test="param.status!=null">
+                status=#{param.status},
+            </if>
+            <if test="param.notes!=null">
+                notes=#{param.notes},
+            </if>
+        </set>
+        where id=#{param.id};
     </update>
 
-    <resultMap id="LeaveMap" type="com.epim.entity.Leave">
-        <id column="id" jdbcType="INTEGER" property="id"></id>
-        <result column="employee_number" jdbcType="VARCHAR" property="employeeNumber"></result>
-        <result column="department_number" jdbcType="VARCHAR" property="departmentNumber"></result>
-        <result column="start_time" jdbcType="DATE" property="startTime"></result>
-        <result column="end_time" jdbcType="DATE" property="endTime"></result>
-        <result column="days" jdbcType="VARCHAR" property="days"></result>
-        <result column="type" jdbcType="VARCHAR" property="type"></result>
-        <result column="reason" jdbcType="VARCHAR" property="reason"></result>
-        <result column="status" jdbcType="VARCHAR" property="status"></result>
-        <result column="notes" jdbcType="VARCHAR" property="notes"></result>
+    <resultMap id="leaveMap" type="com.epim.entity.Leave">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="employee_number" jdbcType="VARCHAR" property="employeeNumber"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="department" jdbcType="VARCHAR" property="department"/>
+        <result column="start_time" jdbcType="VARCHAR" property="startTime"/>
+        <result column="end_time" jdbcType="VARCHAR" property="endTime"/>
+        <result column="days" jdbcType="VARCHAR" property="days"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="reason" jdbcType="VARCHAR" property="reason"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="notes" jdbcType="VARCHAR" property="notes"/>
     </resultMap>
+
 </mapper>

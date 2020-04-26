@@ -27,48 +27,48 @@
                     <h5>添加部门</h5>
                 </div>
                 <div class="ibox-content">
-                    <form  class="form-horizontal" id="commentForm">
+                    <form  class="form-horizontal">
                         <div class="form-group">
                             <label class="col-sm-3 control-label">部门号</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" name="departmentNumber" value="" required>
+                                <input id="deptNum" type="text" class="form-control" name="departmentNumber" value="" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">部门名称</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" placeholder="" name="name" required>
+                                <input id="deptName" type="text" class="form-control" placeholder="" name="name" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">经理</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" placeholder="" name="manager" required>
+                                <input id="manager" type="text" class="form-control" placeholder="" name="manager" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">电话</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" placeholder="" name="telephone" required>
+                                <input id="tele" type="text" class="form-control" placeholder="" name="telephone" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">地址</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" placeholder="" name="address" required>
+                                <input id="address" type="text" class="form-control" placeholder="" name="address" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">备注</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" placeholder="" name="notes">
+                                <input id="notes" type="text" class="form-control" placeholder="" name="notes">
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-8">
-                                <button class="btn btn-success" type="submit" onclick="ajaxPost()">添&nbsp;&nbsp;加</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button class="btn btn-white" type="reset" href="departmentAdd.html">取&nbsp;&nbsp;消</button>
+                                <a type="button" class="btn btn-success" onclick="addDept()">添&nbsp;&nbsp;加</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a type="button" class="btn btn-white" onclick="reload()">取&nbsp;&nbsp;消</a>
                             </div>
                         </div>
                     </form>
@@ -98,15 +98,34 @@
 <!-- layer javascript -->
 <script src="../js/plugins/layer/layer.min.js"></script>
 <script>
-    $().ready(function() {
-        $("#commentForm").validate();
-    });
-    $.validator.setDefaults({
-        submitHandler: function() {
-            parent.layer.alert('添加成功！',{icon: 1}),
-                form.submit();
-        }
-    });
+    function reload() {
+        location.href="departmentAdd.html";
+    }
+    function addDept() {
+        var deptNum=document.getElementById("deptNum").value;
+        var name=document.getElementById("deptName").value;
+        var manager=document.getElementById("manager").value;
+        var tele=document.getElementById("tele").value;
+        var address=document.getElementById("address").value;
+        var notes=document.getElementById("notes").value;
+        $.ajax({
+            type:"GET",
+            url:"http://localhost:9090/EPIMSystem/dept/new-dept?id="+deptNum+"&name="+name+"&manager="+manager+"&tele="+tele+"&address="+address+"&notes="+notes,
+            dataType:"JSON",
+            success:function (result) {
+                if (result==="1"){
+                    alert("部门添加成功");
+                    location.href="departmentList.html";
+                }
+                else {
+                    alert("该部门已存在,请重新输入!");
+                }
+            },
+            error:function () {
+                alert("部门添加失败，请重新添加!");
+            }
+        })
+    }
 </script>
 </body>
 </html>

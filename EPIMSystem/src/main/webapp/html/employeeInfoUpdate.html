@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>修改个人信息</title>
+    <title>修改员工信息</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
 
@@ -25,7 +25,7 @@
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>修改个人信息</h5>
+                    <h5>修改员工信息</h5>
                 </div>
                 <div class="ibox-content">
                     <form method="post" class="form-horizontal" id="commentForm" action="">
@@ -42,9 +42,15 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="col-sm-3 control-label">职位</label>
+                            <div class="col-sm-7">
+                                <input id="position" type="text" class="form-control" placeholder="" name="position">
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-sm-3 control-label">性别</label>
                             <div class="col-sm-7">
-                                <input id="gender" type="text" class="form-control" name="education" value="">
+                                <input id="gender" type="text" class="form-control" name="gender" value="" >
                             </div>
                         </div>
                         <div class="form-group">
@@ -72,15 +78,33 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">当前住址</label>
-                            <div class="col-sm-7">
-                                <input id="address" type="text" class="form-control" placeholder="" name="address">
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label class="col-sm-3 control-label">学历</label>
                             <div class="col-sm-7">
                                 <input id="education" type="text" class="form-control" name="education" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">部门</label>
+                            <div class="col-sm-7">
+                                <select id="deptList" class="form-control m-b" name="department" size="1" required>
+                                    <option value="">请选择部门</option>
+                                    <option value="">人事部</option>
+                                    <option value="">财务部</option>
+                                    <option value="">研发中心</option>
+                                    <option value="">技术支持部</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">基本薪资</label>
+                            <div class="col-sm-7">
+                                <input id="basic" type="text" class="form-control" placeholder="" name="basic">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">权限</label>
+                            <div class="col-sm-7">
+                                <input id="power" type="text" class="form-control" placeholder="" name="power">
                             </div>
                         </div>
                         <div class="form-group">
@@ -92,9 +116,9 @@
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-8">
-                                <a class="btn btn-success" onclick="modifyUserInfo()">修&nbsp;&nbsp;改</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a class="btn btn-white" onclick="reload()">取&nbsp;&nbsp;消</a>
-                            </div>
+                            <a class="btn btn-primary" onclick="modifyPeopleInfo()">修&nbsp;&nbsp;改</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a class="btn btn-white" onclick="reload()">取&nbsp;&nbsp;消</a>
+                        </div>
                         </div>
                     </form>
                 </div>
@@ -114,30 +138,77 @@
 
 <!-- 自定义js -->
 <script src="../js/content.js?v=1.0.0"></script>
-<script src="../js/userAction.js"></script>
 <script>
     window.onload=function (ev) {
-        var number=localStorage.getItem("employeeNumber");
+        var number=localStorage.getItem("employee");
+        alert(number);
         $.ajax({
             type:"GET",
             url:"http://localhost:9090/EPIMSystem/employee/get-employee-info?employeeNumber="+number,
-
+            // data:{},
+            //datatype:JSON,
             success:function (data) {
                 document.getElementById("id").value=data.employeeNumber;
                 document.getElementById("name").value=data.name;
-                document.getElementById("gender").value=data.gender;
                 document.getElementById("birthday").value=data.birthday;
+                document.getElementById("gender").value=data.gender;
+                document.getElementById("deptList").value=data.departmentNumber;
                 document.getElementById("phone").value=data.telephone;
                 document.getElementById("email").value=data.email;
                 document.getElementById("native").value=data.nativeLand;
+                document.getElementById("basic").value=data.basicSalary;
                 document.getElementById("education").value=data.education;
+                document.getElementById("position").value=data.position;
                 document.getElementById("notes").value=data.notes;
+                document.getElementById("power").value=data.power;
             },
             error:function () {
-                alert("获取信息失败!");
+                alert("w");
+            }
+        })
+    },
+    function reload() {
+        location.href="employeeInfoUpdate.html";
+    },
+    function modifyPeopleInfo() {
+        var id=document.getElementById("id").value;
+        var name=document.getElementById("name").value;
+        var gender=document.getElementById("gender");
+        var index=gender.selectedIndex;
+        var gen=gender.options[index].innerText;
+        var birth=document.getElementById("birthday").value;
+        var tele=document.getElementById("phone").value;
+        var email=document.getElementById("email").value;
+        var native=document.getElementById("native").value;
+        var edu=document.getElementById("education").value;
+        var dept=document.getElementById("deptList");
+        var index2=dept.selectedIndex;
+        var deptN=dept.options[index2].innerText;
+        var notes=document.getElementById("notes").value;
+        var address=document.getElementById("").value;
+        var posi=document.getElementById("position").value;
+        var power=document.getElementById("power").value;
+        // var =document.getElementById("").value;
+        // var =document.getElementById("").value;
+
+        if (gen==='请选择性别'){
+            alert("请选择性别!");
+        }
+        if (deptN==='请选择部门'){
+            alert("请选择部门!");
+        }
+
+        $.ajax({
+            type:"GET",
+            url:"http://localhost:9090/EPIMSystem/employee/modify-employee?id="+id+"&name="+name+"&pwd="+pwd+"&gen="+gen+"&bir="+birth
+                +"&tele="+tele+"&email="+email+"&native="+native+"&edu="+edu+"&dept="+deptN+"&notes="+notes+"&posi="+posi+"&address="+address+"&power="+power,
+            success:function (data) {
+                alert("添加员工成功!");
+                location.href="employeeList.html";
             }
         })
     }
 </script>
+
 </body>
 </html>

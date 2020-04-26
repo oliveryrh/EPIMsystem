@@ -27,97 +27,122 @@
                     <h5>添加员工</h5>
                 </div>
                 <div class="ibox-content">
-                    <form  class="form-horizontal" id="commentForm">
+                    <form  class="form-horizontal">
                         <div class="form-group">
                             <label class="col-sm-3 control-label">工号</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" name="employeeNumber" value="">
+                                <input id="emNum" type="text" class="form-control" name="employeeNumber" value="">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">姓名</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" placeholder="" name="name" minlength="2" required>
+                                <input id="name" type="text" class="form-control" placeholder="" name="name" minlength="2" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">密码</label>
                             <div class="col-sm-7">
-                                <input type="password" class="form-control" placeholder="" id="password" name="password" minlength="4" required>
+                                <input id="pwd" type="password" class="form-control" placeholder="" id="password" name="password" minlength="4" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">确认密码</label>
                             <div class="col-sm-7">
-                                <input type="password" class="form-control" placeholder="" name="password2" equalTo="#password" minlength="4" required>
+                                <input id="confirm" type="password" class="form-control" placeholder="" name="password2" equalTo="#password" minlength="4" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">职位</label>
+                            <div class="col-sm-7">
+                                <input id="position" type="text" class="form-control" placeholder="" name="position">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">性别</label>
                             <div class="col-sm-7">
-                                <div class="radio i-checks">
-                                    <label>
-                                        <input type="radio" value="男" name="gender" checked="checked"> <i></i>男</label>
-                                    <i style="margin-left: 25px"></i>
-                                    <label>
-                                        <input type="radio" value="女" name="gender"> <i></i>女</label>
-                                </div>
+                                <select id="gender" class="form-control m-b" name="" size="1" required>
+                                    <option value="">请选择性别</option>
+                                    <option value="">男</option>
+                                    <option value="">女</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">出生日期</label>
                             <div class="col-sm-7">
-                                <input type="date" class="form-control" size="1" name="date">
+                                <input id="birthday" type="date" class="form-control" size="1" name="date">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">联系方式</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" placeholder="" name="telephone">
+                                <input id="tele" type="text" class="form-control" placeholder="" name="telephone">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">邮箱</label>
                             <div class="col-sm-7" >
-                                <input type="text" class="form-control" placeholder="" name="email" email="ture">
+                                <input id="email" type="text" class="form-control" placeholder="" name="email" email="ture">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">籍贯</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" placeholder="" name="address">
+                                <input id="native" type="text" class="form-control" placeholder="" name="native">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">当前住址</label>
+                            <div class="col-sm-7">
+                                <input id="address" type="text" class="form-control" placeholder="" name="address">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">学历</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" placeholder="" name="education">
+                                <select id="education" class="form-control m-b" name="departmentNumber" size="1" required>
+                                    <option value="">请选择学历</option>
+                                    <option value="小学">小学</option>
+                                    <option value="初中">初中</option>
+                                    <option value="高中">高中</option>
+                                    <option value="大学本科">大学本科</option>
+                                    <option value="硕士">硕士</option>
+                                    <option value="博士">博士</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">部门</label>
                             <div class="col-sm-7">
-                                <select class="form-control m-b" name="departmentNumber" size="1" required>
-                                    <option value="">--请选择部门--</option>
-
-                                    <option value="">
-                                        dsad
-                                    </option>
-
+                                <select id="optionList" class="form-control m-b" name="departmentNumber" size="1" required>
+                                    <option value="">请选择部门</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">基本薪资</label>
+                            <div class="col-sm-7">
+                                <input id="basic" type="text" class="form-control" placeholder="" name="basic">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">权限</label>
+                            <div class="col-sm-7">
+                                <input id="power" type="text" class="form-control" placeholder="" name="power">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">备注</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" placeholder="" name="notes">
+                                <input id="notes" type="text" class="form-control" placeholder="" name="notes">
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-8">
-                                <button class="btn btn-success" type="submit">添&nbsp;&nbsp;加</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button class="btn btn-white" type="reset">取&nbsp;&nbsp;消</button>
+                                <a class="btn btn-success" onclick="employeeAdd()">添&nbsp;&nbsp;加</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a class="btn btn-white" onclick="reload()">取&nbsp;&nbsp;消</a>
                             </div>
                         </div>
                     </form>
@@ -145,15 +170,70 @@
 <!-- layer javascript -->
 <script src="../js/plugins/layer/layer.min.js"></script>
 <script>
-    $().ready(function() {
-        $("#commentForm").validate();
-    });
-    $.validator.setDefaults({
-        submitHandler: function() {
-            parent.layer.alert('添加成功！',{icon: 1}),
-                form.submit();
+    window.onload=function(ev) {
+        $.ajax({
+            type:"GET",
+            url:"http://localhost:9090/EPIMSystem/dept/get-dept-list",
+
+            success:function (data) {
+                var optionlist=document.getElementById("optionList");
+                for (var i in data){
+                    var option=document.createElement("option");
+                    option.innerText=data[i].name;
+                    optionlist.appendChild(option);
+                }
+            }
+        })
+    };
+    function reload() {
+        location.href="employeeAdd.html";
+    }
+    function employeeAdd() {
+        var id=document.getElementById("emNum").value;
+        var name=document.getElementById("name").value;
+        var pwd=document.getElementById("pwd").value;
+        var confirm=document.getElementById("confirm").value;
+        var gender=document.getElementById("gender");
+        var index=gender.selectedIndex;
+        var gen=gender.options[index].innerText;
+        var birth=document.getElementById("birthday").value;
+        var tele=document.getElementById("tele").value;
+        var email=document.getElementById("email").value;
+        var native=document.getElementById("native").value;
+        var edu=document.getElementById("education");
+        var index1=edu.selectedIndex;
+        var educa=edu.options[index1].innerText;
+        var dept=document.getElementById("optionList");
+        var index2=dept.selectedIndex;
+        var deptN=dept.options[index2].innerText;
+        var notes=document.getElementById("notes").value;
+        var basic=document.getElementById("basic").value;
+        var posi=document.getElementById("position").value;
+        var address=document.getElementById("address").value;
+        var power=document.getElementById("power").value;
+        if (gen==='请选择性别'){
+            alert("请选择性别!");
         }
-    });
+        if (deptN==='请选择部门'){
+            alert("请选择部门!");
+        }
+        if (educa==='请选择学历'){
+            alert("请选择学历!");
+        }
+        if (pwd!==confirm){
+            alert("两次密码输入不一致,请重新输入!");
+        }
+
+        $.ajax({
+            type:"GET",
+            url:"http://localhost:9090/EPIMSystem/employee/new-employee?id="+id+"&name="+name+"&pwd="+pwd+"&gen="+gen+"&bir="+birth
+                +"&tele="+tele+"&email="+email+"&native="+native+"&edu="+educa+"&dept="+deptN+"&notes="+notes+"&posi="+posi+"&address="+address+"&power="+power+"&basic="+basic,
+            success:function (data) {
+                alert("添加员工成功!");
+                location.href="employeeList.html";
+            }
+        })
+    }
 </script>
 </body>
 </html>

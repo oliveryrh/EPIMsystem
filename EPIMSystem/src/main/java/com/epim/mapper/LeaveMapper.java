@@ -8,5 +8,5 @@ import java.util.List;
 
 @Mapper
 public interface LeaveMapper extends BaseMapper<Leave> {
-    List<Leave> findByParam(@Param("param")Leave leave);
+    Leave find(@Param("id")String id);
 }

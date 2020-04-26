@@ -16,6 +16,10 @@ public class leaveServiceImpl implements LeaveService {
         return this.mapper.findById(id);
     }
 
+    public Leave find(String id) {
+        return this.mapper.find(id);
+    }
+
     public List<Leave> findAll() {
         return this.mapper.findAll();
     }

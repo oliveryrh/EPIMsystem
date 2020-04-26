@@ -7,7 +7,7 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
 
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="">
     <link href="../css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
     <link href="../css/font-awesome.css?v=4.4.0" rel="stylesheet">
 
@@ -80,6 +80,10 @@
                                     <label class="col-sm-8 control-label">部门：</label>
                                     <p class="form-control-static" id="dept"></p>
                                 </div>
+                                <div class="col-md-4">
+                                    <label class="col-sm-5 control-label">职位：</label>
+                                    <p class="form-control-static" id="position"></p>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-1"></div>
@@ -123,18 +127,31 @@
                     var id=document.getElementById("id");
                     id.innerText=data.employeeNumber;
                     var name=document.getElementById("name");
+                    name.innerText=data.name;
                     var gender=document.getElementById("gender");
+                    gender.innerText=data.gender;
                     var birthday=document.getElementById("birthday");
+                    birthday.innerText=data.birthday;
                     var phone=document.getElementById("phone");
+                    phone.innerText=data.telephone;
                     var email=document.getElementById("email");
+                    alert(data.email);
+                    email.innerText=data.email;
                     var native=document.getElementById("native");
+                    native.innerText=data.nativeLand;
                     var education=document.getElementById("education");
+                    education.innerText=data.education;
                     var dept=document.getElementById("dept");
+                    dept.innerText=data.departmentNumber;
+                    var position=document.getElementById("position");
+                    position.innerText=data.position;
                     var time=document.getElementById("inTime");
+                    time.innerText=data.inTime;
                     var notes=document.getElementById("notes");
+                    notes.innerText=data.notes;
                 },
                 error:function () {
-
+                    alert("w");
                 }
             })
         }

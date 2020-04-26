@@ -9,11 +9,14 @@
 	</sql>
 	
 	<select id="findById" resultMap="AttendanceMap">
-		select 
-		<include refid="Base_Column_List" />
-		from attendance
-		where employee_number = #{employeeNumber}
-		and day = #{day} and time_type = #{timeType}
+		select * from attendance
+		where employee_number = #{id}
+		and day = #{param.day} and time_type = #{param.timeType}
+	</select>
+
+	<select id="findByEmployeeId" resultMap="AttendanceMap" parameterType="java.lang.String">
+		select * from attendance
+		where employee_number = #{id}
 	</select>
 
 	<select id="findAll" resultMap="AttendanceMap">
@@ -21,29 +24,58 @@
 	</select>
 
 	<insert id="insert" parameterType="com.epim.entity.Attendance">
-		insert into attendance(employee_number,day,time_type,start_time,start_type,end_time,end_type,work_type,notes)
-		values (#{employee_number},#{day},#{time_type},#{start_time},#{start_type},#{end_time},#{end_type},
-		#{work_type},#{notes})
+		insert into attendance(employee_number,name,day,time_type,start_time,start_type,end_time,end_type,work_type,notes)
+		values (#{param.employeeNumber},#{param.name},#{param.day},#{param.timeType},#{param.startTime},#{param.startType},#{param.endTime},#{param.endType},
+			#{param.workType},#{param.notes})
 	</insert>
 
 	<update id="update" parameterType="com.epim.entity.Attendance">
 		update attendance
 		<set>
-
+			<if test="param.employeeNumber!=null">
+				employee_number=#{param.employeeNumber},
+			</if>
+			<if test="param.name!=null">
+				name=#{param.name},
+			</if>
+			<if test="param.day!=null">
+				day=#{param.day},
+			</if>
+			<if test="param.timeType!=null">
+				time_type=#{param.timeType},
+			</if>
+			<if test="param.startTime!=null">
+				start_time=#{param.startTime},
+			</if>
+			<if test="param.startType!=null">
+				start_type=#{param.startType},
+			</if>
+			<if test="param.endTime!=null">
+				end_time=#{param.endTime},
+			</if>
+			<if test="param.endType!=null">
+				end_type=#{param.endType},
+			</if>
+			<if test="param.workType!=null">
+				work_type=#{param.workType},
+			</if>
+			<if test="param.notes!=null">
+				notes=#{param.notes},
+			</if>
 		</set>
-		where
+		where employee_number=#{param.employeeNumber} and day=#{param.day}
 	</update>
 
 	<resultMap id="AttendanceMap" type="com.epim.entity.Attendance">
-		<id column="id" jdbcType="INTEGER" property="id"></id>
-		<result column="employee_number" jdbcType="VARCHAR" property="employeeNumber"></result>
-		<result column="day" property="day" jdbcType="DATE"></result>
-		<result column="time_type" property="timeType" jdbcType="VARCHAR"></result>
-		<result column="start_time" property="startTime" jdbcType="TIME"></result>
-		<result column="start_type" property="startType" jdbcType="VARCHAR"></result>
-		<result column="end_time" property="endTime" jdbcType="TIME"></result>
-		<result column="end_type" property="endType" jdbcType="VARCHAR"></result>
-		<result column="work_type" property="workType" jdbcType="VARCHAR"></result>
-		<result column="notes" property="notes" jdbcType="VARCHAR"></result>
+		<id column="id" jdbcType="INTEGER" property="id"/>
+		<result column="employee_number" jdbcType="VARCHAR" property="employeeNumber"/>
+		<result column="day" property="day" jdbcType="VARCHAR"/>
+		<result column="time_type" property="timeType" jdbcType="VARCHAR"/>
+		<result column="start_time" property="startTime" jdbcType="VARCHAR"/>
+		<result column="start_type" property="startType" jdbcType="VARCHAR"/>
+		<result column="end_time" property="endTime" jdbcType="VARCHAR"/>
+		<result column="end_type" property="endType" jdbcType="VARCHAR"/>
+		<result column="work_type" property="workType" jdbcType="VARCHAR"/>
+		<result column="notes" property="notes" jdbcType="VARCHAR"/>
 	</resultMap>
 </mapper>

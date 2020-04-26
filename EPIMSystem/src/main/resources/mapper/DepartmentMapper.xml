@@ -20,20 +20,38 @@
 		select * from department where department_number=#{id};
 	</select>
 
-	<insert id="insert" >-- parameterType="com.epim.entity.Department"
+	<insert id="insert" parameterType="com.epim.entity.Department">
 		insert into department(department_number,name,manager,telephone,address,notes)
-		values(#{departmentNumber},#{name},#{manager},#{telephone},#{address},#{notes});
+		values(#{param.departmentNumber},#{param.name},#{param.manager},
+			#{param.telephone},#{param.address},#{param.notes});
 	</insert>
 
-	<update id="update">
+	<update id="update" parameterType="com.epim.entity.Department">
 		update department
 		<set>
-
+			<if test="param.departmentNumber!=null">
+				department_number=#{param.departmentNumber},
+			</if>
+			<if test="param.name!=null">
+				name=#{param.name},
+			</if>
+			<if test="param.manager!=null">
+				manager=#{param.manager},
+			</if>
+			<if test="param.telephone!=null">
+				telephone=#{param.telephone},
+			</if>
+			<if test="param.address!=null">
+				address=#{param.address},
+			</if>
+			<if test="param.notes!=null">
+				notes=#{param.notes},
+			</if>
 		</set>
-		where department_number=#{departmentNumber};
+		where department_number=#{param.departmentNumber};
 	</update>
 
-	<delete id="delete">
+	<delete id="deleteById" parameterType="java.lang.String">
 		delete from department where department_number=#{id};
 	</delete>
 </mapper>

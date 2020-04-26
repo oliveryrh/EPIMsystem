@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE>
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>忘记密码</title>
+    <title>员工薪资设置</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
 
-<!--    <link rel="shortcut icon" href="favicon.ico">-->
     <link href="../css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
     <link href="../css/font-awesome.css?v=4.4.0" rel="stylesheet">
 
@@ -25,38 +24,40 @@
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>忘记密码</h5>
+                    <h5>员工薪资设置</h5>
                 </div>
                 <div class="ibox-content">
-                    <form class="form-horizontal">
+                    <form  class="form-horizontal">
                         <div class="form-group">
                             <label class="col-sm-3 control-label">工号</label>
                             <div class="col-sm-7">
-                                <input id="userId" type="text" class="form-control" name="employeeNumber" value="">
+                                <input id="id" type="text" class="form-control" name="id" value="" required readonly>
                             </div>
                         </div>
 <!--                        <div class="form-group">-->
-<!--                            <label class="col-sm-3 control-label">验证邮箱</label>-->
+<!--                            <label class="col-sm-3 control-label">名字</label>-->
 <!--                            <div class="col-sm-7">-->
-<!--                                <input type="text" class="form-control" placeholder="" name="confirmEmail" value="">-->
+<!--                                <input id="name" type="text" class="form-control" placeholder="" name="name" required>-->
 <!--                            </div>-->
 <!--                        </div>-->
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">新密码</label>
+                            <label class="col-sm-3 control-label">奖金</label>
                             <div class="col-sm-7">
-                                <input id="new" type="password" class="form-control" placeholder="" name="newPassword" value="">
+                                <input id="deduct" type="text" class="form-control" placeholder="" name="deduct" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">确认密码</label>
+                            <label class="col-sm-3 control-label">补贴</label>
                             <div class="col-sm-7">
-                                <input id="confirm" type="password" class="form-control" placeholder="" name="confirmPassword" value="">
+                                <input id="subsidy" type="text" class="form-control" placeholder="" name="subsidy" required>
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
                         <div class="form-group">
-                                <a type="button" class="btn btn-success btn-block" onclick="forgetPassword()">保&nbsp;&nbsp;存</a>
-                                <a type="button" class="btn btn-white btn-block" href="forgetPassword.html">取&nbsp;&nbsp;消</a>
+                            <div class="col-sm-4 col-sm-offset-8">
+                                <a type="button" class="btn btn-success" onclick="salarySet()">保&nbsp;&nbsp;存</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a type="button" class="btn btn-white" onclick="reload()">取&nbsp;&nbsp;消</a>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -64,7 +65,7 @@
         </div>
     </div>
 </div>
-</body>
+
 <!-- 全局js -->
 <script src="../js/jquery.min.js?v=2.1.4"></script>
 <script src="../js/bootstrap.min.js?v=3.3.6"></script>
@@ -75,7 +76,8 @@
 <script src="../js/plugins/dataTables/dataTables.bootstrap.js"></script>
 
 <!-- 自定义js -->
-<script src="../js/pageBack.js"></script>
+<script src="../js/content.js?v=1.0.0"></script>
+<script src="../js/layer.js"></script>
 <script src="../js/userAction.js"></script>
 
 <!-- 表单验证 -->
@@ -85,8 +87,13 @@
 <!-- layer javascript -->
 <script src="../js/plugins/layer/layer.min.js"></script>
 <script>
+    window.onload=function (ev) {
+        var id=document.getElementById("id");
+        id.value=localStorage.getItem("employee");
+    };
     function reload() {
-        location.href="forgetPassword.html";
+        location.href="employeeSalarySet.html";
     }
 </script>
+</body>
 </html>

@@ -6,10 +6,8 @@ import com.epim.datatransport.Request;
 import com.epim.datatransport.Response;
 import com.epim.datatransport.request.UserRequest;
 import com.epim.datatransport.response.DepartmentResponse;
-import com.epim.entity.Department;
-import com.epim.entity.User;
-import com.epim.service.DepartmentService;
-import com.epim.service.UserService;
+import com.epim.entity.*;
+import com.epim.service.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,6 +26,8 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+
+import java.util.List;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -49,26 +49,23 @@ public class DeptTest {
     @Test
     public void getDeptList()throws Exception{
 
-//        RequestBuilder requestBuilder= MockMvcRequestBuilders.post("/user/reset-password")
-//                .content(JSONUtils.toJSONString("y001"))
-//                .contentType(MediaType.APPLICATION_JSON);
-//
-//        MvcResult result=mockMvc.perform(requestBuilder).andExpect(MockMvcResultMatchers.status().isOk()).andDo(MockMvcResultHandlers.print()).andReturn();
-//
-//        String content=result.getResponse().getContentAsString();
-//
-//        DepartmentResponse response= JSONObject.parseObject(content,DepartmentResponse.class);
-//        System.out.println(response);
 
         String xmlPath="/spring/spring.xml";
         ApplicationContext context = new ClassPathXmlApplicationContext(xmlPath);
-//        DepartmentService service = (DepartmentService) context.getBean("DepartmentService");
-//        Department user = service.findById("2001");
-//        System.out.println(user.getName());
 
-        UserService service = (UserService) context.getBean("UserService");
-        User user = service.findById("y001");
-        System.out.println(user.getSalt());
+        EmployeeService employeeService = (EmployeeService) context.getBean("EmployeeService");
+        Employee user = employeeService.findById("y001");
+        System.out.println(user.getBasicSalary());
+//        Leave leave=new Leave();
+//        leave.setEmployeeNumber("y001");
+//        leave.setName("yrh");
+//        leave.setDays("研发中心");
+//        leave.setStartTime("2020-04-18");
+//        leave.setEndTime("2020-04-20");
+//        leave.setDays("3");
+//        leave.setStatus("n");
+//        leaveService.insert(leave);
+
 
     }
 }

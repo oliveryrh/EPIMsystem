@@ -18,7 +18,7 @@ public class SalaryServiceImpl implements SalaryService {
     }
 
     public List<Salary> findAll() {
-        return salaryMapper.findAll();
+        return this.salaryMapper.findAll();
     }
 
     public void insert(Salary object) {

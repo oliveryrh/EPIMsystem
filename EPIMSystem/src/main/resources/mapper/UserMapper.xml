@@ -17,22 +17,33 @@
     </select>
 
     <insert id="insert" parameterType="com.epim.entity.User">
-        insert into USER (employee_number,name,password,power)
-        values (#{employeeNumber},#{name},#{password},#{power});
+        insert into user (employee_number,name,password,power)
+        values (#{param.employeeNumber},#{param.name},#{param.password},#{param.power});
     </insert>
 
     <update id="update" parameterType="com.epim.entity.User">
         update user
-        <trim prefix="set" suffixOverrides=",">
-            <if test="employeeNumber!=null">employee_number=#{employeeNumber},</if>
-            <if test="name!=null">name=#{name},</if>
-            <if test="password!=null">password=#{password},</if>
-            <if test="power!=null">power=#{power},</if>
-        </trim>
-        where employee_number=#{employeeNumber};
+        <set>
+            <if test="param.employeeNumber!=null">
+                employee_number=#{param.employeeNumber},
+            </if>
+            <if test="param.name!=null">
+                name=#{param.name},
+            </if>
+            <if test="param.password!=null">
+                password=#{param.password},
+            </if>
+            <if test="param.salt!=null">
+                salt=#{param.salt},
+            </if>
+            <if test="param.power!=null">
+                power=#{param.power},
+            </if>
+        </set>
+        where employee_number=#{param.employeeNumber};
     </update>
 
     <delete id="delete" parameterType="java.lang.String">
-        delete from USER where employee_number=#{employeeNumber}
+        delete from USER where employee_number=#{id}
     </delete>
 </mapper>

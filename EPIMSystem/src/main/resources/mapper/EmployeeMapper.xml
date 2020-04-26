@@ -5,62 +5,102 @@
 
 	<sql id="Base_Column_List">
 		employee_number, name, gender, birthday, telephone, email, address, photo,
-		education, department_number, position_number, in_time, password, notes
+		education, department_number, position_number, in_time, password, notes,nativeLand,
 	</sql>
 	
-	<select id="checkLogin" resultType="Employee">
-		select
-		<include refid="Base_Column_List" />
-		from employee 
-		where employee_number = #{employeeNumber} and password = #{password}
-	</select>
-	
-	<select id="findById" parameterType="java.lang.String" resultMap="employeeMap">
-		select
-		<include refid="Base_Column_List" />
-		from employee
+	<select id="findById" resultMap="employeeMap" parameterType="java.lang.String">
+		select * from employee
 		where employee_number = #{id}
 	</select>
 
 	<select id="findAll" resultMap="employeeMap">
-		select <include refid="Base_Column_List" /> from employee
+		select * from employee
 	</select>
 
-	<insert id="insert">
-		insert into employee values
-		<foreach collection="param" item="obj" open="(" separator="," close=")">
-			#{obj}
-		</foreach>
+	<insert id="insert" parameterType="com.epim.entity.Employee">
+		insert into employee(employee_number,name,position,gender,birthday,telephone,email,address,
+			education,department_number,in_time,password,notes,native,power,basic_salary)
+		values(#{param.employeeNumber},#{param.name},#{param.position},#{param.gender},#{param.birthday},#{param.telephone},#{param.email},
+			#{param.address},#{param.education},#{param.departmentNumber},#{param.inTime},#{param.password},#{param.notes},#{param.nativeLand},
+			#{param.power},#{param.basicSalary})
 	</insert>
 
-	<update id="update">
+	<update id="update" parameterType="com.epim.entity.Employee">
 		update employee
 		<set>
-			<foreach collection="param" item="obj" open="(" separator="," close=")">
-				#{obj},
-			</foreach>
+			<if test="param.employeeNumber!=null">
+				employee_number=#{param.employeeNumber},
+			</if>
+			<if test="param.name!=null">
+				name=#{param.name},
+			</if>
+			<if test="param.position!=null">
+				position=#{param.position},
+			</if>
+			<if test="param.gender!=null">
+				gender=#{param.gender},
+			</if>
+			<if test="param.birthday!=null">
+				birthday=#{param.birthday},
+			</if>
+			<if test="param.telephone!=null">
+				telephone=#{param.telephone},
+			</if>
+			<if test="param.email!=null">
+				email=#{param.email},
+			</if>
+			<if test="param.address!=null">
+				address=#{param.address},
+			</if>
+			<if test="param.education!=null">
+				education=#{param.education},
+			</if>
+			<if test="param.departmentNumber!=null">
+				department_number=#{param.departmentNumber},
+			</if>
+			<if test="param.inTime!=null">
+				in_time=#{param.inTime},
+			</if>
+			<if test="param.password!=null">
+				password=#{param.password},
+			</if>
+			<if test="param.notes!=null">
+				notes=#{param.notes},
+			</if>
+			<if test="param.nativeLand!=null">
+				native=#{param.nativeLand},
+			</if>
+			<if test="param.power!=null">
+				power=#{param.power},
+			</if>
+			<if test="param.basicSalary!=null">
+				basic_salary=#{param.basicSalary},
+			</if>
 		</set>
-		 where employee_number=#{id}
+		 where employee_number=#{param.employeeNumber}
 	</update>
 
-	<delete id="delete" parameterType="java.lang.String">
+	<delete id="deleteById" parameterType="java.lang.String">
 		delete from employee where employee_number=#{id}
 	</delete>
 
 	<resultMap id="employeeMap" type="com.epim.entity.Employee">
 		<id column="employee_number" property="employeeNumber" jdbcType="VARCHAR"/>
-		<result column="name" property="name" jdbcType="VARCHAR"></result>
-		<result column="gender" property="gender" jdbcType="VARCHAR"></result>
-		<result column="birthday" property="birthday" jdbcType="DATE"></result>
-		<result column="telephone" property="telephone" jdbcType="VARCHAR"></result>
-		<result column="email" property="email" jdbcType="VARCHAR"></result>
-		<result column="address" property="address" jdbcType="VARCHAR"></result>
-		<result column="photo" property="photo" jdbcType="VARCHAR"></result>
-		<result column="education" property="education" jdbcType="VARCHAR"></result>
-		<result column="department_number" property="departmentNumber" jdbcType="VARCHAR"></result>
-		<result column="in_time" property="inTime" jdbcType="TIMESTAMP"></result>
-		<result column="password" property="password" jdbcType="VARCHAR"></result>
-		<result column="notes" property="notes" jdbcType="VARCHAR"></result>
+		<result column="name" property="name" jdbcType="VARCHAR"/>
+		<result column="gender" property="gender" jdbcType="VARCHAR"/>
+		<result column="birthday" property="birthday" jdbcType="VARCHAR"/>
+		<result column="telephone" property="telephone" jdbcType="VARCHAR"/>
+		<result column="email" property="email" jdbcType="VARCHAR"/>
+		<result column="address" property="address" jdbcType="VARCHAR"/>
+		<result column="position" property="position" jdbcType="VARCHAR"/>
+		<result column="education" property="education" jdbcType="VARCHAR"/>
+		<result column="department_number" property="departmentNumber" jdbcType="VARCHAR"/>
+		<result column="in_time" property="inTime" jdbcType="VARCHAR"/>
+		<result column="password" property="password" jdbcType="VARCHAR"/>
+		<result column="notes" property="notes" jdbcType="VARCHAR"/>
+		<result column="native" property="nativeLand" jdbcType="VARCHAR"/>
+		<result column="power" property="power" jdbcType="VARCHAR"/>
+		<result column="basic_salary" property="basicSalary" jdbcType="VARCHAR"/>
 	</resultMap>
 
 </mapper>

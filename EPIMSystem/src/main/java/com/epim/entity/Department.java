@@ -30,8 +30,8 @@ public class Department {
     public String getDepartmentNumber(){
         return departmentNumber;
     }
-    public void setDepartmentNumber(String departmentNumber){
-        this.departmentNumber=departmentNumber;
+    public void setDepartmentNumber(String department_number){
+        this.departmentNumber=department_number;
     }
 
     public String getName(){

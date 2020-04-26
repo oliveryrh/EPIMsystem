@@ -16,6 +16,10 @@ public class AttendanceServiceImpl implements AttendanceService {
         return this.attendanceMapper.findById(id);
     }
 
+    public List<Attendance> findByEmployeeId(String id) {
+        return this.attendanceMapper.findByEmployeeId(id);
+    }
+
     public List<Attendance> findAll() {
         return this.attendanceMapper.findAll();
     }

@@ -1,16 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.epim.entity.Salary">
+<mapper namespace="com.epim.mapper.SalaryMapper">
 
     <resultMap id="salaryMap" type="com.epim.entity.Salary">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="employee_number" jdbcType="VARCHAR" property="employeeNumber"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="position" jdbcType="VARCHAR" property="position"/>
         <result column="month" jdbcType="VARCHAR" property="month"/>
-        <result column="basic_salary" jdbcType="DECIMAL" property="basicSalary"/>
-        <result column="deduct" jdbcType="DECIMAL" property="deduct"/>
-        <result column="final_salary" jdbcType="DECIMAL" property="finalSalary"/>
+        <result column="attendance_days" jdbcType="VARCHAR" property="attendanceDays"/>
+        <result column="basic_salary" jdbcType="VARCHAR" property="basicSalary"/>
+        <result column="deduct" jdbcType="VARCHAR" property="deduct"/>
+        <result column="subsidy" jdbcType="VARCHAR" property="subsidy"/>
+        <result column="tax" jdbcType="VARCHAR" property="tax"/>
+        <result column="insurance" jdbcType="VARCHAR" property="insurance"/>
+        <result column="final_salary" jdbcType="VARCHAR" property="finalSalary"/>
     </resultMap>
+
+
+    <select id="findAll" resultMap="salaryMap">
+        select * from salary;
+    </select>
+
+    <select id="findById" parameterType="java.lang.String" resultMap="salaryMap">
+        select * from salary where employee_number=#{id};
+    </select>
+
+    <insert id="insert" parameterType="com.epim.entity.Salary">
+        insert into salary(employee_number,name,position,month,attendance_days,basic_salary,deduct,subsidy,tax,insurance,final_salary)
+        values (#{param.employeeNumber},#{param.name},#{param.position},#{param.month},#{param.attendanceDays},
+        #{param.basicSalary},#{param.deduct},#{param.subsidy},#{param.tax},#{param.insurance},#{param.finalSalary});
+    </insert>
+
+    <update id="update" parameterType="com.epim.entity.Salary">
+        update salary
+        <set>
+            <if test="param.employeeNumber!=null">
+               employee_number=#{param.employeeNumber},
+            </if>
+            <if test="param.name!=null">
+                name=#{param.name},
+            </if>
+            <if test="param.month!=null">
+                month=#{param.name},
+            </if>
+            <if test="param.attendanceDays!=null">
+                attendance_days=#{param.attendanceDays},
+            </if>
+            <if test="param.basicSalary!=null">
+                basic_salary=#{param.basicSalary},
+            </if>
+            <if test="param.deduct!=null">
+                deduct=#{param.deduct},
+            </if>
+            <if test="param.subsidy!=null">
+                subsidy=#{param.subsidy},
+            </if>
+            <if test="param.tax!=null">
+                tax=#{param.tax},
+            </if>
+            <if test="param.insurance!=null">
+                insurance=#{param.insurance},
+            </if>
+            <if test="param.finalSalary!=null">
+                final_salary=#{param.finalSalary},
+            </if>
+        </set>
+        where employee_number= #{param.employeeNumber}and id=#{param.id};
+    </update>
 
 </mapper>
